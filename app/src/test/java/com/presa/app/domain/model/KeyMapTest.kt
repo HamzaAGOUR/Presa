@@ -30,6 +30,7 @@ class KeyMapTest {
                 VisualizerKeyMap.ZOOM_IN,
                 VisualizerKeyMap.ZOOM_OUT,
                 VisualizerKeyMap.FIT,
+                VisualizerKeyMap.FULLSCREEN,
                 VisualizerKeyMap.PANELS,
                 VisualizerKeyMap.PRESENTATION,
                 VisualizerKeyMap.RESET,
@@ -51,6 +52,7 @@ class KeyMapTest {
         assertChord(VisualizerKeyMap.ZOOM_IN, KeyChord.shift(HidKeys.EQUALS))
         assertChord(VisualizerKeyMap.ZOOM_OUT, KeyChord.plain(HidKeys.MINUS))
         assertChord(VisualizerKeyMap.FIT, KeyChord.plain(HidKeys.DIGIT_0))
+        assertChord(VisualizerKeyMap.FULLSCREEN, KeyChord.shift(HidKeys.F))
         assertChord(VisualizerKeyMap.PANELS, KeyChord.plain(HidKeys.D))
         assertChord(VisualizerKeyMap.PRESENTATION, KeyChord.plain(HidKeys.P))
         assertChord(VisualizerKeyMap.RESET, KeyChord.plain(HidKeys.R))

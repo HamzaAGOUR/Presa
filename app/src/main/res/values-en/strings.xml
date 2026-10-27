@@ -96,6 +96,7 @@
     <string name="visualizer_zoom_in">Zoom in</string>
     <string name="visualizer_zoom_out">Zoom out</string>
     <string name="visualizer_fit">Fit</string>
+    <string name="visualizer_fullscreen">Fullscreen</string>
     <string name="visualizer_panels">Bottom panels</string>
     <string name="visualizer_presentation">Presentation mode</string>
     <string name="visualizer_reset">Reset</string>
@@ -210,6 +211,22 @@
     <string name="settings_about_text">Presa is a local, offline presentation remote. No data leaves your phone.</string>
     <string name="settings_version">Version %1$s</string>
     <string name="settings_license">MIT License</string>
+
+    <string name="about_title">About</string>
+    <string name="about_description_fr">Presa transforme un téléphone Android en télécommande de présentation Bluetooth. Aucune donnée ne quitte votre téléphone : les touches sont envoyées directement à l’ordinateur comme celles d’un clavier HID standard.</string>
+    <string name="about_description_en">Presa turns an Android phone into a Bluetooth presentation remote. No data leaves your phone: key presses are sent directly to the computer as a standard HID keyboard.</string>
+    <string name="about_section_credits">Created by</string>
+    <string-array name="about_credit_names">
+        <item>El Mahdi Cherkane</item>
+        <item>Omar Moussaid</item>
+        <item>Hamza Agour</item>
+    </string-array>
+    <string name="about_institution">EST Béni Mellal</string>
+    <string name="about_source">d’après le cours du Pr. M. OUTANOUTE</string>
+    <string name="about_section_links">Links</string>
+    <string name="about_link_visualizer">DSA Visualizer on GitHub</string>
+    <string name="about_link_presa">Presa on GitHub</string>
+    <string name="message_link_failed">Could not open the link.</string>
 
     <string name="remap_title">Remap keys</string>
     <string name="remap_subtitle">Choose a command, then a key. Changes apply immediately.</string>

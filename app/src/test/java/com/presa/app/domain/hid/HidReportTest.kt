@@ -1,5 +1,6 @@
 package com.presa.app.domain.hid
 
+import com.presa.app.domain.model.HidKeys
 import com.presa.app.domain.model.KeyChord
 import com.presa.app.domain.model.KeyModifiers
 import org.junit.Assert.assertArrayEquals
@@ -25,6 +26,16 @@ class HidReportTest {
 
         assertEquals(0x03, report[0].toInt())
         assertEquals(0x2E, report[2].toInt())
+    }
+
+    @Test
+    fun keyDown_shiftFIsTheVisualizerFullscreenShortcut() {
+        val report = HidReport.keyDown(KeyChord.shift(HidKeys.F))
+
+        assertArrayEquals(
+            byteArrayOf(0x02, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00),
+            report,
+        )
     }
 
     @Test

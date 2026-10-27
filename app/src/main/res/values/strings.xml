@@ -96,6 +96,7 @@
     <string name="visualizer_zoom_in">Zoom avant</string>
     <string name="visualizer_zoom_out">Zoom arrière</string>
     <string name="visualizer_fit">Ajuster</string>
+    <string name="visualizer_fullscreen">Plein écran</string>
     <string name="visualizer_panels">Panneaux inférieurs</string>
     <string name="visualizer_presentation">Mode présentation</string>
     <string name="visualizer_reset">Réinitialiser</string>
@@ -210,6 +211,22 @@
     <string name="settings_about_text">Presa est une télécommande de présentation locale et hors ligne. Aucune donnée ne quitte votre téléphone.</string>
     <string name="settings_version">Version %1$s</string>
     <string name="settings_license">Licence MIT</string>
+
+    <string name="about_title">À propos</string>
+    <string name="about_description_fr">Presa transforme un téléphone Android en télécommande de présentation Bluetooth. Aucune donnée ne quitte votre téléphone : les touches sont envoyées directement à l’ordinateur comme celles d’un clavier HID standard.</string>
+    <string name="about_description_en">Presa turns an Android phone into a Bluetooth presentation remote. No data leaves your phone: key presses are sent directly to the computer as a standard HID keyboard.</string>
+    <string name="about_section_credits">Réalisé par</string>
+    <string-array name="about_credit_names">
+        <item>El Mahdi Cherkane</item>
+        <item>Omar Moussaid</item>
+        <item>Hamza Agour</item>
+    </string-array>
+    <string name="about_institution">EST Béni Mellal</string>
+    <string name="about_source">d’après le cours du Pr. M. OUTANOUTE</string>
+    <string name="about_section_links">Liens</string>
+    <string name="about_link_visualizer">Visualiseur DSA sur GitHub</string>
+    <string name="about_link_presa">Presa sur GitHub</string>
+    <string name="message_link_failed">Impossible d’ouvrir le lien.</string>
 
     <string name="remap_title">Remapper les touches</string>
     <string name="remap_subtitle">Choisissez une commande puis une touche. Les modifications s’appliquent immédiatement.</string>

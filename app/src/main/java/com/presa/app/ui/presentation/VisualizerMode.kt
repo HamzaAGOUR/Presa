@@ -13,6 +13,7 @@ import androidx.compose.material.icons.automirrored.rounded.ExitToApp
 import androidx.compose.material.icons.automirrored.rounded.LastPage
 import androidx.compose.material.icons.rounded.FitScreen
 import androidx.compose.material.icons.rounded.FirstPage
+import androidx.compose.material.icons.rounded.Fullscreen
 import androidx.compose.material.icons.rounded.KeyboardArrowDown
 import androidx.compose.material.icons.rounded.KeyboardArrowUp
 import androidx.compose.material.icons.rounded.PlayArrow
@@ -61,6 +62,7 @@ fun VisualizerMode(
     val zoomIn = byId.getValue(VisualizerKeyMap.ZOOM_IN)
     val zoomOut = byId.getValue(VisualizerKeyMap.ZOOM_OUT)
     val fit = byId.getValue(VisualizerKeyMap.FIT)
+    val fullscreen = byId.getValue(VisualizerKeyMap.FULLSCREEN)
     val panels = byId.getValue(VisualizerKeyMap.PANELS)
     val presentation = byId.getValue(VisualizerKeyMap.PRESENTATION)
     val reset = byId.getValue(VisualizerKeyMap.RESET)
@@ -228,6 +230,15 @@ fun VisualizerMode(
                     modifier = Modifier.weight(1f),
                 )
             }
+            PresaActionButton(
+                action = fullscreen,
+                overrides = overrides,
+                enabled = enabled,
+                onPress = onPress,
+                onRelease = onRelease,
+                icon = Icons.Rounded.Fullscreen,
+                modifier = Modifier.fillMaxWidth(),
+            )
             PresaActionButton(
                 action = back,
                 overrides = overrides,

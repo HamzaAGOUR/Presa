@@ -76,6 +76,7 @@ object VisualizerKeyMap {
     const val ZOOM_IN = "visualizer.zoom_in"
     const val ZOOM_OUT = "visualizer.zoom_out"
     const val FIT = "visualizer.fit"
+    const val FULLSCREEN = "visualizer.fullscreen"
     const val PANELS = "visualizer.panels"
     const val PRESENTATION = "visualizer.presentation"
     const val RESET = "visualizer.reset"
@@ -92,6 +93,7 @@ object VisualizerKeyMap {
         KeyAction(ZOOM_IN, R.string.visualizer_zoom_in, KeyChord.shift(HidKeys.EQUALS)),
         KeyAction(ZOOM_OUT, R.string.visualizer_zoom_out, KeyChord.plain(HidKeys.MINUS)),
         KeyAction(FIT, R.string.visualizer_fit, KeyChord.plain(HidKeys.DIGIT_0)),
+        KeyAction(FULLSCREEN, R.string.visualizer_fullscreen, KeyChord.shift(HidKeys.F)),
         KeyAction(PANELS, R.string.visualizer_panels, KeyChord.plain(HidKeys.D)),
         KeyAction(PRESENTATION, R.string.visualizer_presentation, KeyChord.plain(HidKeys.P)),
         KeyAction(RESET, R.string.visualizer_reset, KeyChord.plain(HidKeys.R)),
