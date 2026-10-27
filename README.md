@@ -8,7 +8,7 @@ Presa registers a standard Bluetooth HID keyboard and sends real key presses to 
 ![Android](https://img.shields.io/badge/Android-9%2B%20(API%2028)-3DDC84?logo=android&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-1f2a5c)
 
-> **Project status:** the app builds, and 33 unit tests cover key maps, HID reports, the remap codec, and timer formatting. It has not yet been verified on physical hardware in this repository. Use [docs/TESTING.md](docs/TESTING.md) for the device test plan.
+> **Project status:** the app builds, and 34 unit tests cover key maps, HID reports, the remap codec, and timer formatting. It has not yet been verified on physical hardware in this repository. Use [docs/TESTING.md](docs/TESTING.md) for the device test plan.
 
 <p>
   <img src="docs/screenshots/main-light.svg" width="240" alt="Presa main remote screen, light theme (preview placeholder)" />
@@ -24,7 +24,7 @@ _The images above are interface previews / screenshot placeholders. Real device 
 ## Features
 
 - **Standard Bluetooth HID keyboard** — uses Android's `BluetoothHidDevice` profile. Nothing to install on the host computer.
-- **Visualizer mode** — previous/next, play-pause, start/end, speed, zoom, fit, panels, presentation mode, reset, and back, matching the DSA Visualizer shortcuts.
+- **Visualizer mode** — previous/next, play-pause, start/end, speed, zoom, fit, fullscreen, panels, presentation mode, reset, and back, matching the DSA Visualizer shortcuts.
 - **Slides mode** — separate **PowerPoint** and **PDF** key sets, including slideshow control, black/white screen, laser/pen/eraser, fullscreen, zoom, and page navigation.
 - **Number pad** — jump to a slide (PowerPoint) or a page (Acrobat) by typing a number and pressing Enter.
 - **Hold to repeat** — hold Previous/Next to step repeatedly; the delay and interval are configurable.
@@ -232,6 +232,7 @@ The lesson timer lives above the mode content and keeps running while you open C
 | Repeat speed | Slow (500 ms / 190 ms), Normal (400 ms / 120 ms), Fast (300 ms / 75 ms). |
 | Timer alert | Vibration threshold from 5 to 120 minutes. |
 | Remap keys | Per-command modifier and HID key selection, plus per-key or full reset. |
+| About | App version, the French and English presentation text, project credits, and GitHub links. |
 
 Settings are stored locally with DataStore. Per-button overrides are compactly encoded as `actionId=modifier:usage;…` and survive restart.
 
@@ -290,7 +291,7 @@ app/src/main/java/com/presa/app/
 ./gradlew testDebugUnitTest
 ```
 
-33 unit tests cover:
+34 unit tests cover:
 
 - default HID usages and modifiers for all three key maps,
 - action-id uniqueness and override application,
@@ -325,6 +326,17 @@ For the full manual device checklist — Chrome visualizer, PowerPoint, Chrome P
 - **Single-key reports** — one chord at a time; no multi-key gaming/NKRO support.
 - **Phase 2 (not in v1.0)** — an optional composite HID device with keyboard plus mouse/touchpad. The architecture leaves room for it behind a setting, but it is not shipped yet.
 - **Screenshots** — the images in this repository are previews, not real device captures.
+
+## About and credits
+
+Presa turns an Android phone into a Bluetooth presentation remote. No data leaves your phone: key presses are sent directly to the computer as a standard HID keyboard.
+
+Presa transforme un téléphone Android en télécommande de présentation Bluetooth. Aucune donnée ne quitte votre téléphone : les touches sont envoyées directement à l’ordinateur comme celles d’un clavier HID standard.
+
+Created by **El Mahdi Cherkane**, **Omar Moussaid** and **Hamza Agour** — **EST Béni Mellal**, d’après le cours du Pr. M. OUTANOUTE.
+
+- [DSA Visualizer on GitHub](https://github.com/MehdiCherkane/dsa-visualizer)
+- [Presa on GitHub](https://github.com/MehdiCherkane/presa)
 
 ## License
 

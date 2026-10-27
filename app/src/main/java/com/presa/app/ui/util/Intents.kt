@@ -21,3 +21,10 @@ fun Context.openBluetoothSettings(): Boolean = runCatching {
     )
     true
 }.getOrDefault(false)
+
+fun Context.openUrl(url: String): Boolean = runCatching {
+    startActivity(
+        Intent(Intent.ACTION_VIEW, Uri.parse(url)).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
+    )
+    true
+}.getOrDefault(false)

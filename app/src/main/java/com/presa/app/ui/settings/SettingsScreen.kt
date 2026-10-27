@@ -63,6 +63,7 @@ fun SettingsScreen(
     onRepeatSpeedChange: (RepeatSpeed) -> Unit,
     onTimerMinutesChange: (Int) -> Unit,
     onOpenRemap: () -> Unit,
+    onOpenAbout: () -> Unit,
     onMessage: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -251,8 +252,24 @@ fun SettingsScreen(
                 }
             }
 
-            PresaCard {
-                SectionLabel(text = stringResource(R.string.settings_section_about))
+            PresaCard(
+                modifier = Modifier.clickable(role = Role.Button) {
+                    haptics?.press(hapticsEnabled)
+                    onOpenAbout()
+                },
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    SectionLabel(
+                        text = stringResource(R.string.settings_section_about),
+                        modifier = Modifier.weight(1f),
+                    )
+                    Icon(
+                        imageVector = Icons.Rounded.ChevronRight,
+                        contentDescription = null,
+                        tint = colors.muted,
+                        modifier = Modifier.size(20.dp),
+                    )
+                }
                 Spacer(Modifier.height(10.dp))
                 Text(
                     text = stringResource(R.string.settings_about_text),

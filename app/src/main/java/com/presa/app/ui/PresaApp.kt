@@ -37,6 +37,7 @@ import com.presa.app.ui.presentation.MainScreen
 import com.presa.app.ui.presentation.NumberTarget
 import com.presa.app.ui.presentation.PresentationEvent
 import com.presa.app.ui.presentation.PresentationViewModel
+import com.presa.app.ui.settings.AboutScreen
 import com.presa.app.ui.settings.KeyRemapScreen
 import com.presa.app.ui.settings.SettingsScreen
 import com.presa.app.ui.settings.SettingsViewModel
@@ -44,6 +45,7 @@ import com.presa.app.ui.theme.PresaTheme
 import com.presa.app.ui.timer.TimerAlertHost
 import com.presa.app.ui.timer.TimerSection
 import com.presa.app.ui.timer.TimerViewModel
+import com.presa.app.ui.util.openUrl
 import kotlinx.coroutines.launch
 
 private object Destinations {
@@ -51,6 +53,7 @@ private object Destinations {
     const val CONNECTION = "connection"
     const val SETTINGS = "settings"
     const val REMAP = "remap"
+    const val ABOUT = "about"
 }
 
 @Composable
@@ -122,7 +125,10 @@ private fun AppContent(
     val showMessage: (String) -> Unit = { message -> deliverMessage(message) }
 
     BackHandler(enabled = screen != Destinations.MAIN) {
-        screen = if (screen == Destinations.REMAP) Destinations.SETTINGS else Destinations.MAIN
+        screen = when (screen) {
+            Destinations.REMAP, Destinations.ABOUT -> Destinations.SETTINGS
+            else -> Destinations.MAIN
+        }
     }
 
     LaunchedEffect(Unit) {
@@ -197,6 +203,7 @@ private fun AppContent(
                         onRepeatSpeedChange = settingsViewModel::setRepeatSpeed,
                         onTimerMinutesChange = settingsViewModel::setTimerAlertMinutes,
                         onOpenRemap = { screen = Destinations.REMAP },
+                        onOpenAbout = { screen = Destinations.ABOUT },
                         onMessage = showMessage,
                     )
 
@@ -206,6 +213,15 @@ private fun AppContent(
                         onSetOverride = settingsViewModel::setKeyOverride,
                         onResetOverride = settingsViewModel::resetKeyOverride,
                         onResetAll = settingsViewModel::resetAllKeyOverrides,
+                    )
+
+                    Destinations.ABOUT -> AboutScreen(
+                        onBack = { screen = Destinations.SETTINGS },
+                        onOpenUrl = { url ->
+                            if (!context.openUrl(url)) {
+                                showMessage(context.getString(R.string.message_link_failed))
+                            }
+                        },
                     )
                 }
             }
