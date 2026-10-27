@@ -8,14 +8,19 @@ captures/
 .cxx/
 *.apk
 *.aab
+output-metadata.json
 
 # Local configuration
 local.properties
 local.defaults.properties
 *.iml
+google-services.json
 
 # Android Studio / IntelliJ
 .idea/
+misc.xml
+deploymentTargetDropDown.xml
+render.experimental.xml
 *.hprof
 *.jks
 *.keystore
