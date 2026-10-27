@@ -336,7 +336,7 @@ Presa transforme un téléphone Android en télécommande de présentation Bluet
 Created by **El Mahdi Cherkane**, **Omar Moussaid** and **Hamza Agour** — **EST Béni Mellal**, d’après le cours du Pr. M. OUTANOUTE.
 
 - [DSA Visualizer on GitHub](https://github.com/MehdiCherkane/dsa-visualizer)
-- [Presa on GitHub](https://github.com/MehdiCherkane/presa)
+- [Presa on GitHub](https://github.com/HamzaAGOUR/Presa)
 
 ## License
 

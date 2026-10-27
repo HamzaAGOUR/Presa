@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Single-colour silhouette used by Android 13+ themed icons. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <path
+        android:fillColor="@android:color/white"
+        android:fillType="evenOdd"
+        android:pathData="M34.5,48 H73.5 A4.5,4.5 0 0 1 78,52.5 V71.5 A4.5,4.5 0 0 1 73.5,76 H34.5 A4.5,4.5 0 0 1 30,71.5 V52.5 A4.5,4.5 0 0 1 34.5,48 Z M45.5,62 L45.5,53.5 A8.5,8.5 0 1 1 54,62 Z M58,55.5 H68.5 A1.5,1.5 0 0 1 68.5,58.5 H58 A1.5,1.5 0 0 1 58,55.5 Z M58,65 H65.5 A1.5,1.5 0 0 1 65.5,68 H58 A1.5,1.5 0 0 1 58,65 Z" />
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M51.5,76 H56.5 V80.5 H51.5 Z" />
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M41,80.5 H67 A1.5,1.5 0 0 1 67,83.5 H41 A1.5,1.5 0 0 1 41,80.5 Z" />
+    <group
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:translateX="44.51"
+        android:translateY="21.4">
+        <path
+            android:fillColor="@android:color/white"
+            android:pathData="M17.71,7.71 L12,2 H11 V9.59 L6.41,5 L5,6.41 L10.59,12 L5,17.59 L6.41,19 L11,14.41 V22 H12 L17.71,16.29 L13.41,12 Z" />
+    </group>
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M45.97,40.58 A12.5,12.5 0 0 1 45.97,21.42"
+        android:strokeColor="@android:color/white"
+        android:strokeLineCap="round"
+        android:strokeWidth="2.2" />
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M62.03,21.42 A12.5,12.5 0 0 1 62.03,40.58"
+        android:strokeColor="@android:color/white"
+        android:strokeLineCap="round"
+        android:strokeWidth="2.2" />
+</vector>

@@ -1,7 +1,9 @@
 package com.presa.app.ui.components
 
+import android.graphics.Bitmap
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -37,10 +39,26 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.ImageShader
+import androidx.compose.ui.graphics.LinearGradientShader
+import androidx.compose.ui.graphics.Paint
+import androidx.compose.ui.graphics.TileMode
+import androidx.compose.ui.graphics.asAndroidBitmap
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.selected
@@ -54,12 +72,22 @@ import com.presa.app.R
 import com.presa.app.ui.theme.LocalPresaColors
 import com.presa.app.ui.theme.PresaType
 
+/** Zellige tile scaled down from the 240 px desktop tile used by DSA Visualizer. */
+private val ZelligeTileSize = 96.dp
+
 @Composable
 fun PresaBackground(
     modifier: Modifier = Modifier,
     content: @Composable BoxScope.() -> Unit,
 ) {
     val colors = LocalPresaColors.current
+    val density = LocalDensity.current
+    val pattern = ImageBitmap.imageResource(R.drawable.zellige_pattern)
+    val tile = remember(pattern, density.density) {
+        val side = with(density) { ZelligeTileSize.roundToPx() }.coerceAtLeast(1)
+        Bitmap.createScaledBitmap(pattern.asAndroidBitmap(), side, side, true).asImageBitmap()
+    }
+    val zelligeAlpha = if (colors.background.luminance() < 0.5f) 0.24f else 0.20f
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -89,9 +117,67 @@ fun PresaBackground(
                     radius = blueRadius,
                     center = Offset(size.width * 0.92f, 0f),
                 )
+                drawZelligeFrieze(
+                    pattern = tile,
+                    color = colors.gold,
+                    alpha = zelligeAlpha,
+                )
             },
         content = content,
     )
+}
+
+/**
+ * Paints the same Moroccan zellige frieze as the DSA Visualizer: the pattern is
+ * used as an alpha mask for the gold accent and faded out towards the middle so
+ * the remote controls stay readable.
+ */
+private fun DrawScope.drawZelligeFrieze(
+    pattern: ImageBitmap,
+    color: Color,
+    alpha: Float,
+) {
+    if (size.width <= 0f || size.height <= 0f) return
+    val bounds = Rect(Offset.Zero, size)
+    val shader = ImageShader(
+        image = pattern,
+        tileModeX = TileMode.Repeated,
+        tileModeY = TileMode.Repeated,
+    )
+    drawIntoCanvas { canvas ->
+        canvas.saveLayer(bounds, Paint())
+        canvas.drawRect(bounds, Paint().apply { this.color = color })
+        canvas.drawRect(
+            bounds,
+            Paint().apply {
+                this.shader = shader
+                this.alpha = alpha
+                blendMode = BlendMode.DstIn
+            },
+        )
+        canvas.drawRect(
+            bounds,
+            Paint().apply {
+                this.shader = LinearGradientShader(
+                    from = Offset.Zero,
+                    to = Offset(size.width, 0f),
+                    colors = listOf(
+                        Color.White,
+                        Color.White,
+                        Color.White.copy(alpha = 0.55f),
+                        Color.Transparent,
+                        Color.Transparent,
+                        Color.White.copy(alpha = 0.55f),
+                        Color.White,
+                        Color.White,
+                    ),
+                    colorStops = listOf(0f, 0.05f, 0.10f, 0.22f, 0.78f, 0.90f, 0.95f, 1f),
+                )
+                blendMode = BlendMode.DstIn
+            },
+        )
+        canvas.restore()
+    }
 }
 
 @Composable
@@ -100,7 +186,7 @@ fun PresaMark(size: Dp = 40.dp) {
     Box(
         modifier = Modifier
             .size(size)
-            .clip(RoundedCornerShape(size * 0.3f))
+            .clip(RoundedCornerShape(size * 0.28f))
             .background(
                 Brush.linearGradient(
                     listOf(colors.brandNavy, colors.brandNavyHi),
@@ -108,11 +194,12 @@ fun PresaMark(size: Dp = 40.dp) {
             ),
         contentAlignment = Alignment.Center,
     ) {
-        Text(
-            text = "P",
-            color = colors.brandGold,
-            style = MaterialTheme.typography.titleLarge,
-            fontWeight = FontWeight.Black,
+        Image(
+            painter = painterResource(R.drawable.ic_launcher_foreground),
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxSize()
+                .scale(1.45f),
         )
     }
 }

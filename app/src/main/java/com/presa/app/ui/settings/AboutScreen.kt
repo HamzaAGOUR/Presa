@@ -37,7 +37,7 @@ import com.presa.app.ui.components.SectionLabel
 import com.presa.app.ui.theme.LocalPresaColors
 
 private const val VISUALIZER_URL = "https://github.com/MehdiCherkane/dsa-visualizer"
-private const val PRESA_URL = "https://github.com/MehdiCherkane/presa"
+private const val PRESA_URL = "https://github.com/HamzaAGOUR/Presa"
 
 /**
  * About screen reachable from Settings.
