@@ -30,9 +30,10 @@ import kotlinx.coroutines.sync.withLock
 /**
  * Owns the Android Bluetooth HID Device profile.
  *
- * The phone registers a standard boot-keyboard report descriptor, then connects
- * to a bonded HID host (laptop). All report writes go through a Mutex so a held
- * Previous/Next key can never interleave a key-down with another key-down.
+ * The phone registers a standard 8-byte keyboard report descriptor, then
+ * connects to a bonded HID host (laptop). All report writes go through a Mutex
+ * so a held Previous/Next key can never interleave a key-down with another
+ * key-down.
  */
 @SuppressLint("MissingPermission")
 class BluetoothHidManager(
@@ -86,7 +87,7 @@ class BluetoothHidManager(
             if (!registered) {
                 appRegistered = false
                 registerAttempted = false
-                if (profile != null) {
+                if (profile != null && _state.value.status != HidStatus.BLUETOOTH_OFF) {
                     publish(HidStatus.UNSUPPORTED, issue = HidIssue.REGISTER_FAILED)
                 }
                 return
@@ -101,6 +102,9 @@ class BluetoothHidManager(
 
         override fun onConnectionStateChanged(device: BluetoothDevice, state: Int) {
             if (closing) return
+            // A pending disconnect callback can arrive after ACTION_STATE_CHANGED.
+            // Keep the stronger "Bluetooth off" state instead of overwriting it.
+            if (_state.value.status == HidStatus.BLUETOOTH_OFF) return
             when (state) {
                 BluetoothProfile.STATE_CONNECTING -> {
                     rememberDevice(device)
@@ -132,9 +136,17 @@ class BluetoothHidManager(
                     } else {
                         publish(
                             HidStatus.DISCONNECTED,
-                            issue = if (wasConnected) HidIssue.CONNECTION_LOST else null,
+                            issue = when {
+                                wasConnected -> HidIssue.CONNECTION_LOST
+                                reconnectAttempts > 0 -> HidIssue.CONNECTION_FAILED
+                                else -> null
+                            },
                         )
-                        if (wasConnected) scheduleReconnect()
+                        // Retry when an established link drops, or when an
+                        // automatic attempt fails before reaching CONNECTED.
+                        val shouldRetry = wasConnected ||
+                            reconnectAttempts in 1 until MAX_RECONNECT_ATTEMPTS
+                        if (shouldRetry) scheduleReconnect()
                     }
                     refreshHosts()
                 }
@@ -159,6 +171,7 @@ class BluetoothHidManager(
         }
 
         override fun onVirtualCableUnplug(device: BluetoothDevice) {
+            if (closing || _state.value.status == HidStatus.BLUETOOTH_OFF) return
             if (selectedDevice?.address == device.address) selectedDevice = null
             publish(HidStatus.DISCONNECTED, issue = HidIssue.CONNECTION_LOST)
             refreshHosts()
@@ -183,14 +196,20 @@ class BluetoothHidManager(
         }
 
         override fun onServiceDisconnected(profileType: Int) {
-            if (profileType != BluetoothProfile.HID_DEVICE) return
+            if (profileType != BluetoothProfile.HID_DEVICE || closing) return
             profile = null
             profileRequested = false
             registerAttempted = false
             appRegistered = false
             selectedDevice = null
             connectTimeoutJob?.cancel()
-            publish(HidStatus.UNSUPPORTED, issue = HidIssue.PROFILE_UNAVAILABLE)
+            when {
+                !BluetoothPermissions.hasConnectPermission(appContext) ->
+                    publish(HidStatus.PERMISSION_MISSING)
+
+                !isBluetoothOn() -> publish(HidStatus.BLUETOOTH_OFF)
+                else -> publish(HidStatus.UNSUPPORTED, issue = HidIssue.PROFILE_UNAVAILABLE)
+            }
         }
     }
 
@@ -288,6 +307,9 @@ class BluetoothHidManager(
 
         val hidProfile = profile
         if (hidProfile == null) {
+            if (_state.value.status == HidStatus.BLUETOOTH_OFF) {
+                publish(HidStatus.REGISTERING)
+            }
             requestProfile(bluetoothAdapter)
         } else if (appRegistered) {
             syncConnection()
@@ -347,6 +369,9 @@ class BluetoothHidManager(
     fun reconnect() {
         userDisconnected = false
         reconnectAttempts = 0
+        autoConnectJob?.cancel()
+        reconnectJob?.cancel()
+        connectTimeoutJob?.cancel()
         val host = lastHost ?: return
         if (profile == null || !appRegistered) {
             refresh()
@@ -526,7 +551,7 @@ class BluetoothHidManager(
         val sdp = BluetoothHidDeviceAppSdpSettings(
             appContext.getString(R.string.hid_device_name),
             appContext.getString(R.string.hid_device_description),
-            "Presa",
+            appContext.getString(R.string.app_name),
             BluetoothHidDevice.SUBCLASS1_KEYBOARD,
             KeyboardDescriptor.BYTES,
         )
@@ -554,6 +579,7 @@ class BluetoothHidManager(
     }
 
     private fun handleAdapterOff() {
+        profileTimeoutJob?.cancel()
         connectTimeoutJob?.cancel()
         autoConnectJob?.cancel()
         reconnectJob?.cancel()
@@ -684,8 +710,9 @@ class BluetoothHidManager(
 
         val host = lastHost ?: return
         reconnectAttempts += 1
+        val attempt = reconnectAttempts
         reconnectJob = scope.launch {
-            delay(1_500L * reconnectAttempts)
+            delay(1_500L * attempt)
             if (userDisconnected || _state.value.status == HidStatus.CONNECTED) return@launch
 
             val device = findDevice(host.address)
@@ -693,12 +720,10 @@ class BluetoothHidManager(
                 return@launch
             }
 
-            val started = connectInternal(device, automatic = true)
-            if (!started) {
-                // The previous job is finishing; use a clean slot for the next try.
-                reconnectJob = null
-                scheduleReconnect()
-            }
+            // Release the slot before connecting so a failed attempt can queue
+            // the next retry from onConnectionStateChanged.
+            reconnectJob = null
+            connectInternal(device, automatic = true)
         }
     }
 
@@ -769,6 +794,12 @@ class BluetoothHidManager(
         bonded = safeBondState(device) == BluetoothDevice.BOND_BONDED,
         rssi = rssi,
     )
+
+    private fun isBluetoothOn(): Boolean = try {
+        adapter?.isEnabled == true
+    } catch (_: SecurityException) {
+        false
+    }
 
     private fun safeName(device: BluetoothDevice): String? = try {
         device.name?.takeIf { it.isNotBlank() }

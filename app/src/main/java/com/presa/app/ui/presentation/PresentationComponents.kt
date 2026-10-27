@@ -61,6 +61,6 @@ fun PresaActionButton(
         minHeight = minHeight,
         modifier = modifier,
         onPress = { onPress(action) },
-        onRelease = onRelease,
+        onRelease = if (action.repeatable) onRelease else null,
     )
 }
