@@ -1,5 +1,6 @@
 package com.presa.app
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.KeyEvent
@@ -35,6 +36,9 @@ class MainActivity : ComponentActivity() {
         container.hidManager.onPermissionsChanged()
     }
 
+    // ComponentActivity.dispatchKeyEvent is restricted to the AndroidX library
+    // group, but volume keys must be consumed before the window handles them.
+    @SuppressLint("RestrictedApi")
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
         val isVolumeKey = event.keyCode == KeyEvent.KEYCODE_VOLUME_UP ||
             event.keyCode == KeyEvent.KEYCODE_VOLUME_DOWN

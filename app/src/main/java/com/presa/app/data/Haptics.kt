@@ -19,10 +19,14 @@ class Haptics(context: Context) {
         val device = vibrator ?: return
         if (!device.hasVibrator()) return
 
-        if (device.hasAmplitudeControl()) {
-            device.vibrate(VibrationEffect.createOneShot(18L, 150))
-        } else {
-            device.vibrate(VibrationEffect.createOneShot(18L, VibrationEffect.DEFAULT_AMPLITUDE))
+        runCatching {
+            if (device.hasAmplitudeControl()) {
+                device.vibrate(VibrationEffect.createOneShot(18L, 150))
+            } else {
+                device.vibrate(
+                    VibrationEffect.createOneShot(18L, VibrationEffect.DEFAULT_AMPLITUDE),
+                )
+            }
         }
     }
 
@@ -32,11 +36,13 @@ class Haptics(context: Context) {
         if (!device.hasVibrator()) return
 
         val timings = longArrayOf(0L, 380L, 160L, 380L, 160L, 650L)
-        if (device.hasAmplitudeControl()) {
-            val amplitudes = intArrayOf(0, 190, 0, 190, 0, 230)
-            device.vibrate(VibrationEffect.createWaveform(timings, amplitudes, -1))
-        } else {
-            device.vibrate(VibrationEffect.createWaveform(timings, -1))
+        runCatching {
+            if (device.hasAmplitudeControl()) {
+                val amplitudes = intArrayOf(0, 190, 0, 190, 0, 230)
+                device.vibrate(VibrationEffect.createWaveform(timings, amplitudes, -1))
+            } else {
+                device.vibrate(VibrationEffect.createWaveform(timings, -1))
+            }
         }
     }
 }

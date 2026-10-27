@@ -170,7 +170,10 @@
     <string name="timer_reset">Réinitialiser le minuteur</string>
     <string name="timer_target">Objectif : %1$d min</string>
     <string name="timer_alert_title">Temps écoulé</string>
-    <string name="timer_alert_body">Le minuteur de cours a atteint %1$d minutes.</string>
+    <plurals name="timer_alert_body">
+        <item quantity="one">Le minuteur de cours a atteint %1$d minute.</item>
+        <item quantity="other">Le minuteur de cours a atteint %1$d minutes.</item>
+    </plurals>
     <string name="timer_running">En cours</string>
     <string name="timer_paused">En pause</string>
 

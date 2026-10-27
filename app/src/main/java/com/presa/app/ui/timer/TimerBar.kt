@@ -24,6 +24,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -170,7 +171,11 @@ fun TimerAlertDialog(
         },
         text = {
             Text(
-                text = stringResource(R.string.timer_alert_body, timer.alertMinutes),
+                text = pluralStringResource(
+                    R.plurals.timer_alert_body,
+                    timer.alertMinutes,
+                    timer.alertMinutes,
+                ),
                 color = colors.ink2,
             )
         },

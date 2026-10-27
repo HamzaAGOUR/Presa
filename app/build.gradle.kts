@@ -50,6 +50,14 @@ android {
         }
     }
 
+    // Language is switched in-app (attachBaseContext). Keep both locales in
+    // every install instead of relying on Play language splits.
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+
     testOptions {
         unitTests.isReturnDefaultValues = true
     }

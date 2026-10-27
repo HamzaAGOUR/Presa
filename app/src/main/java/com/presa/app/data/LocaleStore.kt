@@ -1,5 +1,6 @@
 package com.presa.app.data
 
+import android.annotation.SuppressLint
 import com.presa.app.domain.model.AppLanguage
 
 /**
@@ -16,6 +17,9 @@ object LocaleStore {
             .getString(KEY_LANGUAGE, AppLanguage.FRENCH.tag)
             ?: AppLanguage.FRENCH.tag
 
+    // Deliberately synchronous: the value must be readable in
+    // Activity.attachBaseContext before the process continues.
+    @SuppressLint("ApplySharedPref")
     fun writeTag(context: android.content.Context, tag: String) {
         context.getSharedPreferences(PREFS, android.content.Context.MODE_PRIVATE)
             .edit()

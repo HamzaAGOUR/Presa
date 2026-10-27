@@ -170,7 +170,10 @@
     <string name="timer_reset">Reset timer</string>
     <string name="timer_target">Target: %1$d min</string>
     <string name="timer_alert_title">Time is up</string>
-    <string name="timer_alert_body">The lesson timer reached %1$d minutes.</string>
+    <plurals name="timer_alert_body">
+        <item quantity="one">The lesson timer reached %1$d minute.</item>
+        <item quantity="other">The lesson timer reached %1$d minutes.</item>
+    </plurals>
     <string name="timer_running">Running</string>
     <string name="timer_paused">Paused</string>
 
