@@ -3,7 +3,7 @@
     <string name="app_name">Presa</string>
     <string name="app_tagline">Presentation remote</string>
     <string name="hid_device_name">Presa Keyboard</string>
-    <string name="hid_device_description">Presa presentation remote</string>
+    <string name="hid_device_description">Presa presentation remote with trackpad</string>
 
     <string name="mode_visualizer">Visualizer</string>
     <string name="mode_slides">Slides</string>
@@ -113,6 +113,16 @@
     <string name="dialog_ok">OK</string>
     <string name="content_desc_decrease">Decrease</string>
     <string name="content_desc_increase">Increase</string>
+
+    <string name="trackpad_section">Trackpad</string>
+    <string name="trackpad_hint">Drag to move the cursor</string>
+    <string name="trackpad_gestures">Two fingers: scroll · two-finger tap: right-click</string>
+    <string name="trackpad_left_click">Left click</string>
+    <string name="trackpad_right_click">Right click</string>
+    <string name="trackpad_disabled">Connect a computer to enable the trackpad.</string>
+    <string name="trackpad_content_desc">Trackpad: drag to move the cursor, tap to click, two fingers to scroll, two-finger tap to right-click.</string>
+    <string name="trackpad_left_click_desc">Send a left click</string>
+    <string name="trackpad_right_click_desc">Send a right click</string>
 
     <string name="slides_section_navigation">Navigation</string>
     <string name="slides_section_show">Slideshow</string>

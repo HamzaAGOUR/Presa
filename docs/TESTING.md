@@ -1,6 +1,6 @@
 # Presa — manual test checklist
 
-Use this checklist before publishing an APK. Unit tests already cover the key maps, HID report bytes, remap codec, descriptor, and timer formatting; the items below validate the Bluetooth stack and host applications, which cannot be tested on the JVM.
+Use this checklist before publishing an APK. Unit tests already cover the key maps, keyboard/mouse report bytes, composite descriptor, remap codec, and timer formatting; the items below validate the Bluetooth stack and host applications, which cannot be tested on the JVM.
 
 ## 1. Test run header
 
@@ -34,7 +34,7 @@ Recommended device coverage:
 
 ## 2. Install and first launch
 
-- [ ] `./gradlew testDebugUnitTest assembleDebug` succeeds; 33 tests pass.
+- [ ] `./gradlew testDebugUnitTest assembleDebug` succeeds; 46 tests pass.
 - [ ] APK installs with `adb install -r app/build/outputs/apk/debug/app-debug.apk`.
 - [ ] Launcher shows **Presa** with the adaptive icon in the theme primary color.
 - [ ] Cold start shows the permission gate on Android 12+ if Nearby devices has not been granted.
@@ -52,18 +52,21 @@ Recommended device coverage:
 - [ ] Presa is open and advertises **Presa Keyboard**.
 - [ ] **Settings → Bluetooth & devices → Add device → Bluetooth** finds the phone.
 - [ ] The pairing code (if shown) can be confirmed on both devices.
-- [ ] Windows lists the device as a keyboard.
+- [ ] Windows lists the device as a keyboard and a mouse/pointer.
 - [ ] Selecting it in Presa connects; the in-app status bar shows **Connecté à …**.
 - [ ] Keys arrive in Notepad: left/right arrows, space, letters `B`, `W`, `D`, `P`, `R`, `E`, `Home`, `End`, `F5`.
+- [ ] The trackpad moves the Windows pointer and clicks work (see section 5).
 - [ ] Removing the device in Windows and re-pairing succeeds.
+- [ ] Upgrading from a keyboard-only build: after removing the old entry and re-pairing, both keys and pointer work.
 - [ ] A stale **Presa Keyboard** entry can be removed and the device paired again.
 
 ### macOS
 
 - [ ] **System Settings → Bluetooth** finds **Presa Keyboard**.
-- [ ] Pairing completes and macOS exposes it as a keyboard.
+- [ ] Pairing completes and macOS exposes it as a keyboard and pointer.
 - [ ] Keyboard Setup Assistant, if it appears, can be closed without affecting keys.
 - [ ] Left/right arrows, Space, `Home`, `End`, `F5`, and `Esc` arrive in TextEdit.
+- [ ] The trackpad moves the macOS pointer and clicks work (see section 5).
 - [ ] Unpairing on macOS and re-pairing succeeds.
 
 ### Linux (BlueZ)
@@ -72,6 +75,7 @@ Recommended device coverage:
 - [ ] `pair`, `trust`, and `connect` complete.
 - [ ] `bluetoothctl info <MAC>` reports `Connected: yes` and the HID service.
 - [ ] Keys arrive in a terminal or text editor.
+- [ ] The trackpad moves the pointer; check `libinput debug-events` if needed (see section 5).
 - [ ] After a host reboot (or Bluetooth restart), Presa reconnects or the host reconnects to the trusted device.
 
 ### Status and errors
@@ -107,7 +111,30 @@ Open the DSA Visualizer (deployed URL or local dev server) in Chrome. Click the 
 - [ ] Switching to Dark and Light themes does not affect key delivery.
 - [ ] With **Volume keys** enabled, Volume Up/Down repeat the same Previous/Next behavior while the remote screen is visible.
 
-## 5. PowerPoint
+## 5. Trackpad
+
+Connect to one of the hosts above. The **Pavé tactile / Trackpad** section sits below the key controls (scroll the remote screen to reach it) and drives the host pointer through the HID mouse collection.
+
+- [ ] While disconnected, the surface is disabled and shows **Connect a computer to enable the trackpad** / **Connectez un ordinateur…**.
+- [ ] After connecting, the surface and both click buttons become active.
+- [ ] One-finger drag moves the pointer in the same direction as the finger, at a usable speed.
+- [ ] Fast full-width swipes stay smooth (about one report per 16 ms) and do not freeze the UI.
+- [ ] A single-finger tap left-clicks a desktop icon or file.
+- [ ] A two-finger tap opens the context menu (right-click).
+- [ ] Two-finger vertical drag scrolls; dragging up scrolls down (natural direction).
+- [ ] Two-finger horizontal drag pans in an app that supports it; record any host app that ignores horizontal pan.
+- [ ] The **Left click** and **Right click** buttons click without moving the pointer.
+- [ ] Rapid taps and swipes never leave a mouse button held on the host.
+- [ ] Press-and-drag selection is not supported (tap-to-click only); confirm this is documented, not treated as a bug.
+- [ ] Holding Previous/Next while using the trackpad does not interleave or drop reports.
+- [ ] Disconnecting disables the trackpad; reconnecting restores it and the first gesture works.
+- [ ] Haptics fire on trackpad taps when enabled and stay silent when disabled.
+- [ ] TalkBack reads the trackpad description and exposes the left/right click custom actions.
+- [ ] French and English trackpad labels and hints are both correct.
+- [ ] On a 360 × 640 dp screen and at 1.3× font scale, the surface and buttons remain reachable by scrolling.
+- [ ] After 15 minutes of mixed swipes and taps, the host still responds without requiring a reconnect.
+
+## 6. PowerPoint
 
 Create a 5-slide deck with a text box and a shape for drawing tests.
 
@@ -127,7 +154,7 @@ Create a 5-slide deck with a text box and a shape for drawing tests.
 - [ ] After leaving the slideshow, `Esc` does not leave PowerPoint in an inconsistent state.
 - [ ] Focus PowerPoint before pressing keys; verify that a focused text editor receives the same characters when the app is in edit mode (document this, do not treat as a bug).
 
-## 6. Chrome PDF viewer
+## 7. Chrome PDF viewer
 
 Open a multi-page PDF in Chrome's built-in viewer.
 
@@ -144,7 +171,7 @@ Open a multi-page PDF in Chrome's built-in viewer.
 - [ ] Hold-to-repeat works for Page Up/Page Down without overshooting more than expected.
 - [ ] Number pad digits + Enter are sent (verify in a text field), but do **not** change the page in Chrome's PDF viewer. Record this as a known host limitation; the in-app “Page X envoyée” message only confirms the keys were sent.
 
-## 7. Acrobat PDF
+## 8. Acrobat PDF
 
 Open a multi-page PDF in Adobe Acrobat (desktop).
 
@@ -158,7 +185,7 @@ Open a multi-page PDF in Adobe Acrobat (desktop).
 - [ ] Number pad works when the page field has focus and when it does not (document any focus requirement).
 - [ ] Holding Previous/Next repeats at the configured speed.
 
-## 8. Timer
+## 9. Timer
 
 - [ ] Timer starts, pauses, and resumes without losing elapsed time.
 - [ ] Reset returns to 00:00 and stops the timer.
@@ -170,7 +197,7 @@ Open a multi-page PDF in Adobe Acrobat (desktop).
 - [ ] Killing the app process resets the timer (expected; document it).
 - [ ] With haptics disabled, key presses do not vibrate; confirm whether the timer alert still vibrates (it is a separate safety alert) and document the behavior.
 
-## 9. Settings, theme, language, and remapping
+## 10. Settings, theme, language, and remapping
 
 - [ ] Theme switches immediately among System / Light / Dark; System follows the OS setting.
 - [ ] Both themes meet readability expectations (status colors, disabled states, dialogs, snackbars).
@@ -190,7 +217,7 @@ Open a multi-page PDF in Adobe Acrobat (desktop).
 - [ ] All remapped actions are still delivered after reconnecting to the host.
 - [ ] Remap UI is usable with TalkBack content descriptions and at 1.3× font scale.
 
-## 10. Layout, accessibility, and lifecycle
+## 11. Layout, accessibility, and lifecycle
 
 - [ ] Main screen fits a 360 × 640 dp viewport; content scrolls rather than clipping.
 - [ ] On a tablet or landscape, spacing remains intentional and no button is unreachable.
@@ -204,7 +231,7 @@ Open a multi-page PDF in Adobe Acrobat (desktop).
 - [ ] Snackbars appear above the content and do not block controls.
 - [ ] No crash or ANR after 15 minutes of repeated key presses.
 
-## 11. Error handling matrix
+## 12. Error handling matrix
 
 | Scenario | Expected behavior |
 | --- | --- |
@@ -216,11 +243,14 @@ Open a multi-page PDF in Adobe Acrobat (desktop).
 | Send while disconnected | “Connect first” message, throttled. |
 | Host disappears mid-press | Repeat loop stops; reconnect attempts start. |
 | HID write failure | “Command could not be sent” message, no stuck key. |
+| Trackpad gesture while disconnected | Surface is disabled; no commands queued; no crash. |
+| Mouse report write failure | Message is throttled; no stuck mouse button; trackpad remains usable after reconnect. |
+| Rapid mixed moves and clicks | Reports are serialized; clicks stay atomic; no interleaved press/release. |
 | Rapid pressing / holding | Reports are serialized; no interleaved key-down/key-up. |
 
-## 12. Sign-off
+## 13. Sign-off
 
-- [ ] Unit tests pass (`33/33` at the time of writing).
+- [ ] Unit tests pass (`46/46` at the time of writing).
 - [ ] All critical items above pass on at least one phone and one host.
 - [ ] Known host-specific limitations are recorded in the README.
 - [ ] Real screenshots replace the placeholders in `docs/screenshots/`.

@@ -30,10 +30,10 @@ import kotlinx.coroutines.sync.withLock
 /**
  * Owns the Android Bluetooth HID Device profile.
  *
- * The phone registers a standard 8-byte keyboard report descriptor, then
- * connects to a bonded HID host (laptop). All report writes go through a Mutex
- * so a held Previous/Next key can never interleave a key-down with another
- * key-down.
+ * The phone registers a composite keyboard + relative mouse report descriptor,
+ * then connects to a bonded HID host (laptop). All report writes go through a
+ * Mutex so a held Previous/Next key or a trackpad swipe can never interleave
+ * reports.
  */
 @SuppressLint("MissingPermission")
 class BluetoothHidManager(
@@ -160,8 +160,27 @@ class BluetoothHidManager(
             bufferSize: Int,
         ) {
             try {
-                if (type == BluetoothHidDevice.REPORT_TYPE_INPUT && id == 0.toByte()) {
-                    profile?.replyReport(device, type, id, HidReport.keyUp())
+                if (type == BluetoothHidDevice.REPORT_TYPE_INPUT) {
+                    when (id.toInt() and 0xFF) {
+                        HidReport.KEYBOARD_REPORT_ID -> profile?.replyReport(
+                            device,
+                            type,
+                            id,
+                            HidReport.keyUp(),
+                        )
+
+                        HidReport.MOUSE_REPORT_ID -> profile?.replyReport(
+                            device,
+                            type,
+                            id,
+                            HidReport.mouseRelease(),
+                        )
+
+                        else -> profile?.reportError(
+                            device,
+                            BluetoothHidDevice.ERROR_RSP_UNSUPPORTED_REQ,
+                        )
+                    }
                 } else {
                     profile?.reportError(device, BluetoothHidDevice.ERROR_RSP_UNSUPPORTED_REQ)
                 }
@@ -437,7 +456,7 @@ class BluetoothHidManager(
             return try {
                 downSent = hidProfile.sendReport(
                     device,
-                    HidReport.REPORT_ID,
+                    HidReport.KEYBOARD_REPORT_ID,
                     HidReport.keyDown(chord),
                 )
                 if (!downSent) {
@@ -457,14 +476,14 @@ class BluetoothHidManager(
                     try {
                         hidProfile.sendReport(
                             device,
-                            HidReport.REPORT_ID,
+                            HidReport.KEYBOARD_REPORT_ID,
                             HidReport.keyUp(),
                         )
                     } catch (_: Exception) {
                         runCatching {
                             hidProfile.sendReport(
                                 device,
-                                HidReport.REPORT_ID,
+                                HidReport.KEYBOARD_REPORT_ID,
                                 HidReport.releaseAll(),
                             )
                         }
@@ -473,6 +492,95 @@ class BluetoothHidManager(
             }
         }
     }
+
+    /**
+     * Moves the host cursor by relative counts. Values outside -127..127 are
+     * clamped by [HidReport.mouse], and the trackpad loop already batches
+     * events to roughly one report per frame.
+     */
+    suspend fun moveMouse(dx: Int, dy: Int): HidSendResult {
+        if (dx == 0 && dy == 0) return HidSendResult(true)
+        return sendMouseReport(HidReport.mouseMove(dx, dy))
+    }
+
+    /** Sends a relative wheel report; [wheel] is vertical, [pan] horizontal. */
+    suspend fun scrollMouse(wheel: Int, pan: Int = 0): HidSendResult {
+        if (wheel == 0 && pan == 0) return HidSendResult(true)
+        return sendMouseReport(HidReport.mouseScroll(wheel, pan))
+    }
+
+    /**
+     * Presses and releases one mouse button while holding the report lock, so
+     * a trackpad move cannot land between the down and up reports.
+     */
+    suspend fun clickMouse(button: MouseButton): HidSendResult = reportMutex.withLock {
+        if (!BluetoothPermissions.hasConnectPermission(appContext)) {
+            return HidSendResult(false, HidSendFailure.PERMISSION)
+        }
+        val hidProfile = profile ?: return HidSendResult(false, HidSendFailure.NOT_CONNECTED)
+        val device = connectedDevice() ?: return HidSendResult(
+            false,
+            HidSendFailure.NOT_CONNECTED,
+        )
+
+        var downSent = false
+        try {
+            downSent = hidProfile.sendReport(
+                device,
+                HidReport.MOUSE_REPORT_ID,
+                HidReport.mouseButton(button, pressed = true),
+            )
+            if (!downSent) {
+                handleWriteFailure()
+                return HidSendResult(false, HidSendFailure.WRITE_FAILED)
+            }
+            delay(CLICK_HOLD_MS)
+            HidSendResult(true)
+        } catch (_: SecurityException) {
+            publish(HidStatus.PERMISSION_MISSING)
+            HidSendResult(false, HidSendFailure.PERMISSION)
+        } catch (_: Exception) {
+            handleWriteFailure()
+            HidSendResult(false, HidSendFailure.WRITE_FAILED)
+        } finally {
+            if (downSent) {
+                runCatching {
+                    hidProfile.sendReport(
+                        device,
+                        HidReport.MOUSE_REPORT_ID,
+                        HidReport.mouseRelease(),
+                    )
+                }
+            }
+        }
+    }
+
+    private suspend fun sendMouseReport(report: ByteArray): HidSendResult =
+        reportMutex.withLock {
+            if (!BluetoothPermissions.hasConnectPermission(appContext)) {
+                return HidSendResult(false, HidSendFailure.PERMISSION)
+            }
+            val hidProfile = profile ?: return HidSendResult(false, HidSendFailure.NOT_CONNECTED)
+            val device = connectedDevice() ?: return HidSendResult(
+                false,
+                HidSendFailure.NOT_CONNECTED,
+            )
+
+            try {
+                if (hidProfile.sendReport(device, HidReport.MOUSE_REPORT_ID, report)) {
+                    HidSendResult(true)
+                } else {
+                    handleWriteFailure()
+                    HidSendResult(false, HidSendFailure.WRITE_FAILED)
+                }
+            } catch (_: SecurityException) {
+                publish(HidStatus.PERMISSION_MISSING)
+                HidSendResult(false, HidSendFailure.PERMISSION)
+            } catch (_: Exception) {
+                handleWriteFailure()
+                HidSendResult(false, HidSendFailure.WRITE_FAILED)
+            }
+        }
 
     fun close() {
         closing = true
@@ -552,8 +660,8 @@ class BluetoothHidManager(
             appContext.getString(R.string.hid_device_name),
             appContext.getString(R.string.hid_device_description),
             appContext.getString(R.string.app_name),
-            BluetoothHidDevice.SUBCLASS1_KEYBOARD,
-            KeyboardDescriptor.BYTES,
+            BluetoothHidDevice.SUBCLASS1_COMBO,
+            HidDescriptor.BYTES,
         )
 
         val registered = try {
@@ -834,5 +942,6 @@ class BluetoothHidManager(
 
     private companion object {
         const val MAX_RECONNECT_ATTEMPTS = 3
+        const val CLICK_HOLD_MS = 12L
     }
 }

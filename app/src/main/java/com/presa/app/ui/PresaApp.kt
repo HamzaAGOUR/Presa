@@ -185,6 +185,10 @@ private fun AppContent(
                         onActionPress = presentationViewModel::onActionPress,
                         onActionRelease = presentationViewModel::onActionRelease,
                         onSendNumber = presentationViewModel::sendNumber,
+                        onTrackpadMove = presentationViewModel::onTrackpadMove,
+                        onTrackpadScroll = presentationViewModel::onTrackpadScroll,
+                        onTrackpadLeftClick = presentationViewModel::onTrackpadLeftClick,
+                        onTrackpadRightClick = presentationViewModel::onTrackpadRightClick,
                     )
 
                     Destinations.CONNECTION -> ConnectionScreen(

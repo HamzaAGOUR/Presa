@@ -38,6 +38,10 @@ fun MainScreen(
     onActionPress: (KeyAction) -> Unit,
     onActionRelease: () -> Unit,
     onSendNumber: (String, NumberTarget) -> Unit,
+    onTrackpadMove: (Float, Float) -> Unit,
+    onTrackpadScroll: (Float, Float) -> Unit,
+    onTrackpadLeftClick: () -> Unit,
+    onTrackpadRightClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val colors = LocalPresaColors.current
@@ -112,6 +116,18 @@ fun MainScreen(
                     modifier = Modifier.fillMaxWidth(),
                 )
             }
+
+            Spacer(Modifier.height(18.dp))
+
+            TrackpadSection(
+                enabled = enabled,
+                onMove = onTrackpadMove,
+                onScroll = onTrackpadScroll,
+                onLeftClick = onTrackpadLeftClick,
+                onRightClick = onTrackpadRightClick,
+                modifier = Modifier.fillMaxWidth(),
+            )
+
             Spacer(Modifier.height(20.dp))
         }
     }

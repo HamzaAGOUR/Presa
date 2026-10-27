@@ -3,7 +3,7 @@
     <string name="app_name">Presa</string>
     <string name="app_tagline">Télécommande de présentation</string>
     <string name="hid_device_name">Presa Keyboard</string>
-    <string name="hid_device_description">Télécommande de présentation Presa</string>
+    <string name="hid_device_description">Télécommande de présentation Presa avec pavé tactile</string>
 
     <string name="mode_visualizer">Visualiseur</string>
     <string name="mode_slides">Diapositives</string>
@@ -113,6 +113,16 @@
     <string name="dialog_ok">OK</string>
     <string name="content_desc_decrease">Diminuer</string>
     <string name="content_desc_increase">Augmenter</string>
+
+    <string name="trackpad_section">Pavé tactile</string>
+    <string name="trackpad_hint">Glissez pour déplacer le curseur</string>
+    <string name="trackpad_gestures">Deux doigts : défiler · appui à deux doigts : clic droit</string>
+    <string name="trackpad_left_click">Clic gauche</string>
+    <string name="trackpad_right_click">Clic droit</string>
+    <string name="trackpad_disabled">Connectez un ordinateur pour activer le pavé tactile.</string>
+    <string name="trackpad_content_desc">Pavé tactile : glissez pour déplacer le curseur, touchez pour cliquer, deux doigts pour défiler, appui à deux doigts pour clic droit.</string>
+    <string name="trackpad_left_click_desc">Envoyer un clic gauche</string>
+    <string name="trackpad_right_click_desc">Envoyer un clic droit</string>
 
     <string name="slides_section_navigation">Navigation</string>
     <string name="slides_section_show">Diaporama</string>

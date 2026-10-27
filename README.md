@@ -2,13 +2,13 @@
 
 **Presa turns an Android phone into a Bluetooth presentation remote — no desktop agent, no dongle, no network.**
 
-Presa registers a standard Bluetooth HID keyboard and sends real key presses to the connected computer, so it works with PowerPoint, Chrome, Acrobat, and the [DSA Visualizer](https://github.com/MehdiCherkane/dsa-visualizer). The interface is available in French (default) and English, with light, dark, and system themes.
+Presa registers a standard Bluetooth HID keyboard **and a relative mouse** and sends real key presses and pointer movement to the connected computer, so it works with PowerPoint, Chrome, Acrobat, and the [DSA Visualizer](https://github.com/MehdiCherkane/dsa-visualizer). The on-screen trackpad moves the host cursor without installing anything on the computer. The interface is available in French (default) and English, with light, dark, and system themes.
 
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.0.21-7F52FF?logo=kotlin&logoColor=white)
 ![Android](https://img.shields.io/badge/Android-9%2B%20(API%2028)-3DDC84?logo=android&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-1f2a5c)
 
-> **Project status:** the app builds, and 34 unit tests cover key maps, HID reports, the remap codec, and timer formatting. It has not yet been verified on physical hardware in this repository. Use [docs/TESTING.md](docs/TESTING.md) for the device test plan.
+> **Project status:** the app builds, and 46 unit tests cover key maps, HID reports, the composite descriptor, the remap codec, and timer formatting. It has not yet been verified on physical hardware in this repository. Use [docs/TESTING.md](docs/TESTING.md) for the device test plan.
 
 <p>
   <img src="docs/screenshots/main-light.svg" width="240" alt="Presa main remote screen, light theme (preview placeholder)" />
@@ -23,7 +23,8 @@ _The images above are interface previews / screenshot placeholders. Real device 
 
 ## Features
 
-- **Standard Bluetooth HID keyboard** — uses Android's `BluetoothHidDevice` profile. Nothing to install on the host computer.
+- **Standard Bluetooth HID keyboard and mouse** — uses Android's `BluetoothHidDevice` profile. Nothing to install on the host computer.
+- **On-screen trackpad** — drag one finger to move the host cursor, tap to left-click, two-finger drag to scroll, two-finger tap to right-click. Dedicated **Left click** and **Right click** buttons mirror those actions for accessibility.
 - **Visualizer mode** — previous/next, play-pause, start/end, speed, zoom, fit, fullscreen, panels, presentation mode, reset, and back, matching the DSA Visualizer shortcuts.
 - **Slides mode** — separate **PowerPoint** and **PDF** key sets, including slideshow control, black/white screen, laser/pen/eraser, fullscreen, zoom, and page navigation.
 - **Number pad** — jump to a slide (PowerPoint) or a page (Acrobat) by typing a number and pressing Enter.
@@ -47,6 +48,8 @@ _The images above are interface previews / screenshot placeholders. Real device 
 | Permissions | Android 12+: **Nearby devices** (`BLUETOOTH_CONNECT`, `BLUETOOTH_SCAN`). Android 9–11: legacy Bluetooth permissions, plus location for device discovery. |
 
 > Some manufacturer firmware does not expose the HID Device profile even on a recent Android version. Presa detects this and shows **“Profil HID indisponible”**. The app cannot add a missing profile to the phone's Bluetooth stack.
+
+> **Upgrading from a keyboard-only build?** The HID descriptor and SDP record changed to a composite keyboard + mouse device. If the trackpad moves nothing after upgrading, remove the old **Presa Keyboard** entry on the computer, then pair again. Windows, macOS, and Linux cache the old descriptor per pairing.
 
 ## Build and install
 
@@ -86,11 +89,11 @@ The release build is not signed by default. Add your own signing config in `app/
 
 ## First run
 
-1. Install and open Presa. Keep the app open — it registers the HID keyboard while the process is alive.
+1. Install and open Presa. Keep the app open — it registers the composite HID keyboard + mouse while the process is alive.
 2. Allow **Nearby devices** when prompted (Android 12+). On Android 9–11, grant location access only if you want to scan for unpaired computers; already-paired hosts work without it.
 3. Turn on Bluetooth.
 4. Pair **Presa Keyboard** from the computer (see below). Presa can also show bonded and nearby devices and request pairing from its Connection screen.
-5. Select the computer in Presa, then open the remote and start presenting.
+5. Select the computer in Presa, then open the remote and start presenting. The trackpad section sits below the key controls; scroll down to it once the computer is connected.
 
 ## Pairing the computer
 
@@ -138,6 +141,22 @@ scan off
 ```
 
 Use the phone's Bluetooth address. The GNOME/KDE Bluetooth panels work as well. If input does not arrive after connecting, confirm the device is trusted and run `bluetoothctl info XX:XX:XX:XX:XX:XX`.
+
+## Trackpad
+
+The **Pavé tactile / Trackpad** section appears below the key controls and activates when a computer is connected. It drives the host pointer through the same Bluetooth HID link as the keys — no desktop agent.
+
+| Gesture | Action |
+| --- | --- |
+| Drag with one finger | Move the pointer |
+| Tap with one finger | Left click |
+| Drag with two fingers | Scroll vertically or horizontally |
+| Tap with two fingers | Right click |
+| **Left click** / **Right click** buttons | Explicit click actions, also exposed to TalkBack |
+
+Movement is relative and scaled for a phone-sized surface. Presa coalesces touch events into about one mouse report every 16 ms, so a fast swipe stays smooth without flooding Bluetooth. Scroll follows the natural touch direction: dragging up scrolls down, dragging right scrolls left. The trackpad is disabled while no computer is connected.
+
+> Mouse input needs the composite descriptor introduced with this build. If the keyboard works but the pointer does not, remove the old **Presa Keyboard** pairing on the computer and pair again so the host re-reads the SDP record.
 
 ## Remote modes and default keys
 
@@ -262,9 +281,9 @@ app/src/main/java/com/presa/app/
 │   └── VolumeKeyRouter.kt
 ├── domain/
 │   ├── hid/
-│   │   ├── BluetoothHidManager.kt  # Registration, connect, reconnect, report writes
-│   │   ├── HidReport.kt            # 8-byte keyboard report builder
-│   │   ├── HidModels.kt            # Descriptor, state, errors
+│   │   ├── BluetoothHidManager.kt  # Registration, connect, reconnect, keyboard/mouse writes
+│   │   ├── HidReport.kt            # Keyboard and mouse report builders
+│   │   ├── HidModels.kt            # Composite descriptor, state, errors
 │   │   └── ...
 │   └── model/
 │       ├── KeyMaps.kt              # Data-driven Visualizer/PowerPoint/PDF maps
@@ -273,7 +292,7 @@ app/src/main/java/com/presa/app/
 │       └── PresaModels.kt          # Modes, theme, language, repeat speed
 └── ui/
     ├── PresaApp.kt                 # Permission gate, navigation, snackbars
-    ├── presentation/               # Remote screen, modes, ViewModel
+    ├── presentation/               # Remote screen, trackpad, modes, ViewModel
     ├── connection/                 # Bonded/nearby hosts, status, ViewModel
     ├── settings/                   # Settings and key remapping
     ├── timer/                      # Shared timer + alert host
@@ -281,7 +300,7 @@ app/src/main/java/com/presa/app/
     └── theme/                      # DSA Visualizer palette and typography
 ```
 
-**HID flow:** a tap builds a `KeyChord`, the ViewModel passes it to `BluetoothHidManager`, which serializes report writes with a mutex. Each press sends key-down, waits briefly, then key-up; the key-up report has no modifiers, so a modifier cannot stay stuck on the host. Key maps are plain data, so remapping and tests do not touch the transport.
+**HID flow:** a tap builds a `KeyChord`, the ViewModel passes it to `BluetoothHidManager`, which serializes report writes with a mutex. Each press sends key-down, waits briefly, then key-up; the key-up report has no modifiers, so a modifier cannot stay stuck on the host. Trackpad touches are queued in the ViewModel, coalesced into relative deltas, and sent as mouse reports through the same mutex; clicks stay atomic so a move cannot land between press and release. Key maps are plain data, so remapping and tests do not touch the transport.
 
 **Design system:** colors, surfaces, and semantic tokens are adapted from the DSA Visualizer's light/dark palette. Typography uses the Android system sans and monospace families.
 
@@ -291,12 +310,12 @@ app/src/main/java/com/presa/app/
 ./gradlew testDebugUnitTest
 ```
 
-34 unit tests cover:
+46 unit tests cover:
 
 - default HID usages and modifiers for all three key maps,
 - action-id uniqueness and override application,
-- HID report layout and release behavior,
-- keyboard descriptor length and structure,
+- keyboard and mouse report layout, button masks, clamping, and release behavior,
+- composite descriptor size, report IDs, and keyboard/mouse collection structure,
 - remap codec round-trips and malformed input,
 - timer clock formatting.
 
@@ -309,6 +328,8 @@ For the full manual device checklist — Chrome visualizer, PowerPoint, Chrome P
 | **“Profil HID indisponible”** | The phone firmware does not expose Bluetooth HID Device. Try another phone or a ROM that supports it. |
 | Computer cannot find **Presa Keyboard** | Keep Presa open, turn Bluetooth on, and remove stale Presa entries on the computer. On Windows use **Add device → Bluetooth**; on Linux make sure `bluetooth` is running. |
 | Paired but no keys arrive | Open Presa, connect from the Connection screen, and test in a text editor. Remove the pairing on both sides and pair again. |
+| Keyboard works but the trackpad does nothing | The host cached the old keyboard-only descriptor. Remove **Presa Keyboard** on the computer, then pair again. Also confirm the app shows **Connected**, since the trackpad is disabled otherwise. |
+| Trackpad pointer is too slow or too fast | Presa applies a fixed phone-sized gain; use shorter or longer swipes. Fast swipes are clamped to the HID report range instead of being dropped. |
 | Windows sees the keyboard but shortcuts do nothing | Click the presentation window to focus it first. Then test `←`/`→` in Notepad to isolate HID from app shortcuts. |
 | Mac opens Keyboard Setup Assistant | Close the assistant. It is not needed for raw HID reports. |
 | Linux connects but receives no input | Run `bluetoothctl trust <MAC>` and `connect <MAC>`, then check `bluetoothctl info <MAC>`. |
@@ -324,14 +345,15 @@ For the full manual device checklist — Chrome visualizer, PowerPoint, Chrome P
 - **HID Device profile required** — software cannot add this profile to unsupported firmware.
 - **Foreground use** — Presa is designed to stay open during a presentation; the screen is kept awake. Aggressive battery managers may kill the process if the app is left in the background.
 - **Single-key reports** — one chord at a time; no multi-key gaming/NKRO support.
-- **Phase 2 (not in v1.0)** — an optional composite HID device with keyboard plus mouse/touchpad. The architecture leaves room for it behind a setting, but it is not shipped yet.
+- **Relative trackpad only** — the pointer moves relative to its current position, like a laptop trackpad. There is no absolute tablet mapping, drag-lock, or three-finger gesture.
+- **Host gesture differences** — two-finger scrolling and right-click are standard HID mouse behavior, but individual applications may interpret wheel or pan events differently.
 - **Screenshots** — the images in this repository are previews, not real device captures.
 
 ## About and credits
 
-Presa turns an Android phone into a Bluetooth presentation remote. No data leaves your phone: key presses are sent directly to the computer as a standard HID keyboard.
+Presa turns an Android phone into a Bluetooth presentation remote. No data leaves your phone: key presses and pointer movement are sent directly to the computer as a standard HID keyboard and mouse.
 
-Presa transforme un téléphone Android en télécommande de présentation Bluetooth. Aucune donnée ne quitte votre téléphone : les touches sont envoyées directement à l’ordinateur comme celles d’un clavier HID standard.
+Presa transforme un téléphone Android en télécommande de présentation Bluetooth. Aucune donnée ne quitte votre téléphone : les touches et les mouvements du curseur sont envoyés directement à l’ordinateur comme ceux d’un clavier et d’une souris HID standard.
 
 Created by **El Mahdi Cherkane**, **Omar Moussaid** and **Hamza Agour** — **EST Béni Mellal**, d’après le cours du Pr. M. OUTANOUTE.
 
