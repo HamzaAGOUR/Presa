@@ -11,13 +11,13 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -38,7 +38,6 @@ import androidx.compose.ui.semantics.onClick
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.presa.app.ui.theme.LocalPresaColors
@@ -155,7 +154,7 @@ fun ActionKeyButton(
 
     Box(
         modifier = modifier
-            .height(minHeight)
+            .heightIn(min = minHeight)
             .graphicsLayer {
                 scaleX = scale
                 scaleY = scale
@@ -221,7 +220,7 @@ fun ActionKeyButton(
                 Spacer(Modifier.height(if (big) 12.dp else 8.dp))
             }
 
-            Text(
+            AutoSizeText(
                 text = label,
                 style = if (big) {
                     MaterialTheme.typography.headlineSmall
@@ -231,7 +230,7 @@ fun ActionKeyButton(
                 fontWeight = if (big) FontWeight.ExtraBold else FontWeight.SemiBold,
                 color = content,
                 maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
+                minScale = 0.68f,
             )
 
             if (!hintOnTop && hint != null) {

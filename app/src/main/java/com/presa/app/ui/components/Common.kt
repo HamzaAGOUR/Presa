@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -45,6 +46,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -282,12 +284,13 @@ fun KeyCap(
         shape = RoundedCornerShape(6.dp),
         color = containerColor ?: colors.panel3,
     ) {
-        Text(
+        AutoSizeText(
             text = text,
             style = PresaType.keycap,
             color = contentColor ?: colors.ink2,
             modifier = Modifier.padding(horizontal = 7.dp, vertical = 3.dp),
             maxLines = 1,
+            minScale = 0.7f,
         )
     }
 }
@@ -341,7 +344,7 @@ fun SegmentedControl(
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .height(42.dp)
+                    .heightIn(min = 42.dp)
                     .clip(RoundedCornerShape(999.dp))
                     .background(background)
                     .semantics { this.selected = isSelected }
@@ -357,13 +360,15 @@ fun SegmentedControl(
                     },
                 contentAlignment = Alignment.Center,
             ) {
-                Text(
+                AutoSizeText(
                     text = option.label,
                     style = MaterialTheme.typography.labelLarge,
                     fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium,
                     color = content,
+                    modifier = Modifier.padding(horizontal = 6.dp, vertical = 4.dp),
                     maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
+                    minScale = 0.6f,
+                    textAlign = TextAlign.Center,
                 )
             }
         }
@@ -392,12 +397,13 @@ fun PresaPrimaryButton(
         shape = RoundedCornerShape(12.dp),
         color = if (enabled) (containerColor ?: colors.navy) else colors.panel3,
     ) {
-        Text(
+        AutoSizeText(
             text = text,
             style = MaterialTheme.typography.labelLarge,
             color = if (enabled) (contentColor ?: colors.onNavy) else colors.muted,
             modifier = Modifier.padding(horizontal = 18.dp, vertical = 13.dp),
             maxLines = 2,
+            minScale = 0.75f,
         )
     }
 }
@@ -437,11 +443,13 @@ fun PresaSecondaryButton(
                 )
                 Spacer(Modifier.width(8.dp))
             }
-            Text(
+            AutoSizeText(
                 text = text,
                 style = MaterialTheme.typography.labelMedium,
                 color = if (enabled) colors.ink2 else colors.muted,
+                modifier = Modifier.weight(1f, fill = false),
                 maxLines = 2,
+                minScale = 0.75f,
             )
         }
     }

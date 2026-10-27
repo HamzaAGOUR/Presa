@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -42,7 +43,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.presa.app.R
 import com.presa.app.data.PresaSettings
@@ -53,6 +53,7 @@ import com.presa.app.domain.model.KeyModifiers
 import com.presa.app.domain.model.PdfKeyMap
 import com.presa.app.domain.model.PowerPointKeyMap
 import com.presa.app.domain.model.VisualizerKeyMap
+import com.presa.app.ui.components.AutoSizeText
 import com.presa.app.ui.components.HatchOverlay
 import com.presa.app.ui.components.KeyCap
 import com.presa.app.ui.components.LocalHaptics
@@ -360,7 +361,7 @@ private fun KeyPickerDialog(
                         val selected = keyUsage == usage
                         Surface(
                             modifier = Modifier
-                                .height(38.dp)
+                                .heightIn(min = 38.dp)
                                 .clip(RoundedCornerShape(9.dp))
                                 .clickable(role = Role.Button) {
                                     usage = keyUsage
@@ -374,17 +375,18 @@ private fun KeyPickerDialog(
                             ),
                         ) {
                             Box(
-                                modifier = Modifier.fillMaxSize(),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 3.dp, vertical = 4.dp),
                                 contentAlignment = Alignment.Center,
                             ) {
-                                Text(
+                                AutoSizeText(
                                     text = keyName(keyUsage),
                                     style = MaterialTheme.typography.labelSmall,
                                     color = if (selected) colors.onNavy else colors.ink2,
                                     textAlign = TextAlign.Center,
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis,
-                                    modifier = Modifier.padding(horizontal = 3.dp),
+                                    maxLines = 2,
+                                    minScale = 0.55f,
                                 )
                             }
                         }

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -38,6 +39,7 @@ import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.presa.app.R
 import com.presa.app.ui.theme.LocalPresaColors
@@ -76,9 +78,13 @@ fun NumberPadCard(
         ) {
             Text(
                 text = title,
+                modifier = Modifier.weight(1f),
                 style = MaterialTheme.typography.titleSmall,
                 color = colors.ink,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
             )
+            Spacer(Modifier.width(8.dp))
             KeyCap(
                 text = stringResource(R.string.numberpad_enter),
                 contentColor = colors.ink2,
@@ -90,14 +96,14 @@ fun NumberPadCard(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(64.dp)
+                .heightIn(min = 64.dp)
                 .clip(RoundedCornerShape(12.dp))
                 .background(colors.panel2)
                 .border(1.dp, colors.line, RoundedCornerShape(12.dp))
-                .padding(horizontal = 16.dp),
+                .padding(horizontal = 16.dp, vertical = 8.dp),
             contentAlignment = Alignment.CenterStart,
         ) {
-            Text(
+            AutoSizeText(
                 text = if (value.isEmpty()) {
                     stringResource(R.string.numberpad_display_empty)
                 } else {
@@ -105,6 +111,8 @@ fun NumberPadCard(
                 },
                 style = PresaType.numberPadDisplay,
                 color = if (value.isEmpty()) colors.muted else colors.ink,
+                maxLines = 1,
+                minScale = 0.55f,
             )
         }
 
@@ -186,7 +194,7 @@ fun NumberPadCard(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(52.dp)
+                .heightIn(min = 52.dp)
                 .clip(RoundedCornerShape(12.dp))
                 .background(if (canSend) colors.navy else colors.panel3)
                 .clickable(enabled = canSend) {
@@ -208,15 +216,20 @@ fun NumberPadCard(
                     } else {
                         disabled()
                     }
-                },
+                }
+                .padding(horizontal = 12.dp, vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
         ) {
-            Text(
+            AutoSizeText(
                 text = stringResource(R.string.numberpad_enter),
                 style = MaterialTheme.typography.labelLarge,
                 fontWeight = FontWeight.Bold,
                 color = if (canSend) colors.onNavy else colors.muted,
+                modifier = Modifier.weight(1f, fill = false),
+                maxLines = 1,
+                minScale = 0.65f,
+                textAlign = TextAlign.Center,
             )
             Spacer(Modifier.width(8.dp))
             KeyCap(
@@ -249,7 +262,7 @@ private fun NumberKey(
 
     Box(
         modifier = modifier
-            .height(50.dp)
+            .heightIn(min = 50.dp)
             .clip(RoundedCornerShape(11.dp))
             .background(colors.panel2)
             .then(
@@ -294,7 +307,7 @@ private fun NumberKey(
                 modifier = Modifier.size(21.dp),
             )
         } else {
-            Text(
+            AutoSizeText(
                 text = text.orEmpty(),
                 style = if (textStyleSmall) {
                     MaterialTheme.typography.labelLarge
@@ -302,7 +315,10 @@ private fun NumberKey(
                     PresaType.numberKey
                 },
                 color = contentColor,
+                maxLines = 1,
+                minScale = 0.55f,
                 textAlign = TextAlign.Center,
+                modifier = Modifier.padding(horizontal = 3.dp, vertical = 4.dp),
             )
         }
     }
