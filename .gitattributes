@@ -1,0 +1,12 @@
+# Normalize text files to LF in the repository.
+* text=auto
+
+# Gradle wrapper scripts must keep their platform line endings.
+gradlew text eol=lf
+gradlew.bat text eol=crlf
+
+# Binary artifacts.
+*.jar binary
+*.png binary
+*.jpg binary
+*.webp binary
