@@ -96,6 +96,8 @@ The release build is not signed by default. Add your own signing config in `app/
 
 The phone advertises itself as **Presa Keyboard**. Keep Presa open and its Connection screen visible while pairing.
 
+Pairing can start from either side: if the computer does not list the phone, briefly open the phone's Bluetooth settings to make it discoverable, or scan for the computer from Presa's **Connection** screen and tap **Pair**. Windows and macOS only remain discoverable while their "Add device" / Bluetooth panel is open.
+
 ### Windows 10 / 11
 
 1. Open **Settings → Bluetooth & devices → Add device → Bluetooth**.
@@ -236,7 +238,8 @@ Settings are stored locally with DataStore. Per-button overrides are compactly e
 ## Permissions and privacy
 
 - **Android 12+:** `BLUETOOTH_CONNECT` and `BLUETOOTH_SCAN` (`neverForLocation`). Only used to find, pair, and connect nearby computers.
-- **Android 9–11:** legacy `BLUETOOTH`/`BLUETOOTH_ADMIN`, plus `ACCESS_FINE_LOCATION` for discovery. Location is not read or stored.
+- **Android 9–11:** legacy `BLUETOOTH`/`BLUETOOTH_ADMIN`, plus `ACCESS_COARSE_LOCATION`/`ACCESS_FINE_LOCATION` for discovery. Location is not read or stored.
+- **Vibration:** the normal `VIBRATE` permission powers button haptics and the timer alert.
 - No internet permission. No telemetry, ads, accounts, or cloud services.
 - `allowBackup="false"`; settings never leave the device.
 
