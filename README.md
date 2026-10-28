@@ -1,6 +1,10 @@
-# Presa
+<p align="center">
+  <img src="docs/branding/presa-icon.svg" width="120" alt="Presa logo: a gold presentation remote with a blue node network on a deep navy field" />
+</p>
 
-**Presa turns an Android phone into a Bluetooth presentation remote — no desktop agent, no dongle, no network.**
+<h1 align="center">Presa</h1>
+
+<p align="center"><strong>Presa turns an Android phone into a Bluetooth presentation remote — no desktop agent, no dongle, no network.</strong></p>
 
 <p align="center">
   <a href="https://github.com/HamzaAGOUR/Presa/releases/latest/download/Presa-1.0.0.apk">
@@ -18,14 +22,18 @@ Presa registers a standard Bluetooth HID keyboard **and a relative mouse** and s
 
 > **Project status:** the app builds, and 46 unit tests cover key maps, HID reports, the composite descriptor, the remap codec, and timer formatting. It has not yet been verified on physical hardware in this repository. Use [docs/TESTING.md](docs/TESTING.md) for the device test plan.
 
-<p>
-  <img src="docs/screenshots/main-light.svg" width="240" alt="Presa main remote screen, light theme (preview placeholder)" />
-  <img src="docs/screenshots/connection.svg" width="240" alt="Presa connection screen (preview placeholder)" />
-  <img src="docs/screenshots/settings.svg" width="240" alt="Presa settings screen (preview placeholder)" />
-  <img src="docs/screenshots/main-dark.svg" width="240" alt="Presa main remote screen, dark theme (preview placeholder)" />
+## Screenshots
+
+<p align="center">
+  <img src="docs/screenshots/main-light.svg" width="300" alt="Presa main remote screen in light theme, with the Presa mark, timer, navigation keys and trackpad" />
+  <img src="docs/screenshots/connection.svg" width="300" alt="Presa connection screen with paired and nearby Bluetooth computers" />
+</p>
+<p align="center">
+  <img src="docs/screenshots/settings.svg" width="300" alt="Presa settings screen with appearance, controls and timer options" />
+  <img src="docs/screenshots/main-dark.svg" width="300" alt="Presa main remote screen in dark theme" />
 </p>
 
-_The images above are interface previews / screenshot placeholders. Real device captures can replace the SVGs in [`docs/screenshots/`](docs/screenshots/)._
+_Interface previews rendered from the current design system. Real device captures can be added later in [`docs/screenshots/`](docs/screenshots/)._
 
 ---
 
