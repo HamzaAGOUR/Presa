@@ -33,7 +33,7 @@ Presa registers a standard Bluetooth HID keyboard **and a relative mouse** and s
   <img src="docs/screenshots/main-dark.png" width="300" alt="Presa main remote screen in dark theme" />
 </p>
 
-_Real device captures from Presa 1.0.1. The status bar is cropped and the Bluetooth device names and addresses are anonymized._
+_Real device captures from Presa 1.0.1. Bluetooth device names and addresses are randomized._
 
 ---
 
