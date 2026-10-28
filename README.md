@@ -2,6 +2,14 @@
 
 **Presa turns an Android phone into a Bluetooth presentation remote — no desktop agent, no dongle, no network.**
 
+<p align="center">
+  <a href="https://github.com/HamzaAGOUR/Presa/releases/latest/download/Presa-1.0.0.apk">
+    <img src="https://img.shields.io/badge/Download_Presa_APK-v1.0.0-F0B143?style=for-the-badge&amp;logo=android&amp;logoColor=111827" alt="Download Presa APK" />
+  </a>
+</p>
+
+<p align="center"><sub>Android 9+ (API 28) · debug build · <a href="https://github.com/HamzaAGOUR/Presa/releases/latest">release notes</a></sub></p>
+
 Presa registers a standard Bluetooth HID keyboard **and a relative mouse** and sends real key presses and pointer movement to the connected computer, so it works with PowerPoint, Chrome, Acrobat, and the [DSA Visualizer](https://github.com/MehdiCherkane/dsa-visualizer). The on-screen trackpad moves the host cursor without installing anything on the computer. The interface is available in French (default) and English, with light, dark, and system themes.
 
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.0.21-7F52FF?logo=kotlin&logoColor=white)
@@ -52,6 +60,8 @@ _The images above are interface previews / screenshot placeholders. Real device 
 > **Upgrading from a keyboard-only build?** The HID descriptor and SDP record changed to a composite keyboard + mouse device. If the trackpad moves nothing after upgrading, remove the old **Presa Keyboard** entry on the computer, then pair again. Windows, macOS, and Linux cache the old descriptor per pairing.
 
 ## Build and install
+
+To install without building, download the [latest Presa APK](https://github.com/HamzaAGOUR/Presa/releases/latest/download/Presa-1.0.0.apk). It is a debug-signed build for testing; allow installs from your browser or file manager when prompted.
 
 ### Prerequisites
 
