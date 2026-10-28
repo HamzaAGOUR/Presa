@@ -56,6 +56,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
@@ -182,18 +183,17 @@ private fun DrawScope.drawZelligeFrieze(
 
 @Composable
 fun PresaMark(size: Dp = 40.dp) {
-    val colors = LocalPresaColors.current
     Box(
         modifier = Modifier
             .size(size)
-            .clip(RoundedCornerShape(size * 0.28f))
-            .background(
-                Brush.linearGradient(
-                    listOf(colors.brandNavyDeep, colors.brandNavyDeepHi),
-                ),
-            ),
-        contentAlignment = Alignment.Center,
+            .clip(RoundedCornerShape(size * 0.28f)),
     ) {
+        Image(
+            painter = painterResource(R.drawable.ic_launcher_background),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop,
+        )
         Image(
             painter = painterResource(R.drawable.ic_launcher_foreground),
             contentDescription = null,

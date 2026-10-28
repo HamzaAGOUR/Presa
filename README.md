@@ -7,8 +7,8 @@
 <p align="center"><strong>Presa turns an Android phone into a Bluetooth presentation remote — no desktop agent, no dongle, no network.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/HamzaAGOUR/Presa/releases/latest/download/Presa-1.0.0.apk">
-    <img src="https://img.shields.io/badge/Download_Presa_APK-v1.0.0-F0B143?style=for-the-badge&amp;logo=android&amp;logoColor=111827" alt="Download Presa APK" />
+  <a href="https://github.com/HamzaAGOUR/Presa/releases/latest/download/Presa-1.0.1.apk">
+    <img src="https://img.shields.io/badge/Download_Presa_APK-v1.0.1-F0B143?style=for-the-badge&amp;logo=android&amp;logoColor=111827" alt="Download Presa APK" />
   </a>
 </p>
 
@@ -25,15 +25,15 @@ Presa registers a standard Bluetooth HID keyboard **and a relative mouse** and s
 ## Screenshots
 
 <p align="center">
-  <img src="docs/screenshots/main-light.svg" width="300" alt="Presa main remote screen in light theme, with the Presa mark, timer, navigation keys and trackpad" />
-  <img src="docs/screenshots/connection.svg" width="300" alt="Presa connection screen with paired and nearby Bluetooth computers" />
+  <img src="docs/screenshots/main-light.png" width="300" alt="Presa main remote screen in light theme, with the zellige Presa mark, timer, navigation keys and trackpad" />
+  <img src="docs/screenshots/connection.png" width="300" alt="Presa connection screen showing the connected computer and paired Bluetooth devices" />
 </p>
 <p align="center">
-  <img src="docs/screenshots/settings.svg" width="300" alt="Presa settings screen with appearance, controls and timer options" />
-  <img src="docs/screenshots/main-dark.svg" width="300" alt="Presa main remote screen in dark theme" />
+  <img src="docs/screenshots/settings.png" width="300" alt="Presa settings screen with appearance, controls and timer options" />
+  <img src="docs/screenshots/main-dark.png" width="300" alt="Presa main remote screen in dark theme" />
 </p>
 
-_Interface previews rendered from the current design system. Real device captures can be added later in [`docs/screenshots/`](docs/screenshots/)._
+_Real device captures from Presa 1.0.1. The status bar is cropped and the Bluetooth device names and addresses are anonymized._
 
 ---
 
@@ -69,7 +69,7 @@ _Interface previews rendered from the current design system. Real device capture
 
 ## Build and install
 
-To install without building, download the [latest Presa APK](https://github.com/HamzaAGOUR/Presa/releases/latest/download/Presa-1.0.0.apk). It is a debug-signed build for testing; allow installs from your browser or file manager when prompted.
+To install without building, download the [latest Presa APK](https://github.com/HamzaAGOUR/Presa/releases/latest/download/Presa-1.0.1.apk). It is a debug-signed build for testing; allow installs from your browser or file manager when prompted.
 
 ### Prerequisites
 
@@ -365,7 +365,6 @@ For the full manual device checklist — Chrome visualizer, PowerPoint, Chrome P
 - **Single-key reports** — one chord at a time; no multi-key gaming/NKRO support.
 - **Relative trackpad only** — the pointer moves relative to its current position, like a laptop trackpad. There is no absolute tablet mapping, drag-lock, or three-finger gesture.
 - **Host gesture differences** — two-finger scrolling and right-click are standard HID mouse behavior, but individual applications may interpret wheel or pan events differently.
-- **Screenshots** — the images in this repository are previews, not real device captures.
 
 ## About and credits
 
@@ -382,7 +381,7 @@ Created by **El Mahdi Cherkane**, **Omar Moussaid** and **Hamza Agour** — **ES
 
 <p><img src="docs/branding/presa-icon.svg" width="96" alt="Presa launcher icon: a gold presentation remote with a seven-node blue network on a deep navy field" /></p>
 
-The icon keeps the supplied remote-and-network idea: a gold capsule on a deep navy zellige field, a dark screen, and a seven-node periwinkle tree whose outer branches spill onto the remote body. It ships as an adaptive launcher icon, a round icon, and an Android 13+ monochrome themed icon; the in-app header mark uses the same foreground. See [docs/branding/presa-icon.html](docs/branding/presa-icon.html) for size and mask previews, and [icon-refined.html](docs/branding/icon-refined.html) for the exploration that led to this direction.
+The icon keeps the supplied remote-and-network idea: a gold capsule on a deep navy zellige field, a dark screen, and a seven-node periwinkle tree whose outer branches spill onto the remote body. It ships as an adaptive launcher icon, a round icon, and an Android 13+ monochrome themed icon; the in-app header mark uses the same zellige field and foreground. See [docs/branding/presa-icon.html](docs/branding/presa-icon.html) for size and mask previews, and [icon-refined.html](docs/branding/icon-refined.html) for the exploration that led to this direction.
 
 ## License
 
