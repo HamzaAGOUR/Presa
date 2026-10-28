@@ -20,7 +20,7 @@ Presa registers a standard Bluetooth HID keyboard **and a relative mouse** and s
 ![Android](https://img.shields.io/badge/Android-9%2B%20(API%2028)-3DDC84?logo=android&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-1f2a5c)
 
-> **Project status:** the app builds, and 46 unit tests cover key maps, HID reports, the composite descriptor, the remap codec, and timer formatting. It has not yet been verified on physical hardware in this repository. Use [docs/TESTING.md](docs/TESTING.md) for the device test plan.
+> **Project status:** the app builds, and 46 unit tests cover key maps, HID reports, the composite descriptor, the remap codec, and timer formatting. The screenshots above are real device captures. Use [docs/TESTING.md](docs/TESTING.md) for the full device test plan.
 
 ## Screenshots
 
