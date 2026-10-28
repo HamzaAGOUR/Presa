@@ -52,6 +52,7 @@ fun AboutScreen(
     modifier: Modifier = Modifier,
 ) {
     val colors = LocalPresaColors.current
+    val contactEmail = stringResource(R.string.about_contact_email)
 
     Column(modifier = modifier.fillMaxSize()) {
         PresaScreenHeader(
@@ -144,6 +145,12 @@ fun AboutScreen(
                     url = PRESA_URL,
                     onOpenUrl = onOpenUrl,
                 )
+                AboutLink(
+                    label = stringResource(R.string.about_link_email),
+                    detail = contactEmail,
+                    url = "mailto:$contactEmail",
+                    onOpenUrl = onOpenUrl,
+                )
             }
             Spacer(Modifier.height(8.dp))
         }
@@ -155,6 +162,7 @@ private fun AboutLink(
     label: String,
     url: String,
     onOpenUrl: (String) -> Unit,
+    detail: String = url,
 ) {
     val colors = LocalPresaColors.current
     val haptics = LocalHaptics.current
@@ -177,7 +185,7 @@ private fun AboutLink(
                 color = colors.navy,
             )
             Text(
-                text = url,
+                text = detail,
                 style = MaterialTheme.typography.bodySmall,
                 color = colors.muted,
             )

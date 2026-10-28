@@ -236,6 +236,8 @@
     <string name="about_section_links">Liens</string>
     <string name="about_link_visualizer">Visualiseur DSA sur GitHub</string>
     <string name="about_link_presa">Presa sur GitHub</string>
+    <string name="about_link_email">Contact</string>
+    <string name="about_contact_email" translatable="false">stdprojectestbm@gmail.com</string>
     <string name="message_link_failed">Impossible d’ouvrir le lien.</string>
 
     <string name="remap_title">Remapper les touches</string>
