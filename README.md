@@ -7,8 +7,8 @@
 <p align="center"><strong>Presa turns an Android phone into a Bluetooth presentation remote — no desktop agent, no dongle, no network.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/HamzaAGOUR/Presa/releases/latest/download/Presa-1.0.1.apk">
-    <img src="https://img.shields.io/badge/Download_Presa_APK-v1.0.1-F0B143?style=for-the-badge&amp;logo=android&amp;logoColor=111827" alt="Download Presa APK" />
+  <a href="https://github.com/HamzaAGOUR/Presa/releases/latest/download/Presa-1.0.2.apk">
+    <img src="https://img.shields.io/badge/Download_Presa_APK-v1.0.2-F0B143?style=for-the-badge&amp;logo=android&amp;logoColor=111827" alt="Download Presa APK" />
   </a>
 </p>
 
@@ -69,7 +69,7 @@ _Real device captures from Presa 1.0.1. The status bar is cropped and the Blueto
 
 ## Build and install
 
-To install without building, download the [latest Presa APK](https://github.com/HamzaAGOUR/Presa/releases/latest/download/Presa-1.0.1.apk). It is a debug-signed build for testing; allow installs from your browser or file manager when prompted.
+To install without building, download the [latest Presa APK](https://github.com/HamzaAGOUR/Presa/releases/latest/download/Presa-1.0.2.apk). It is a debug-signed build for testing; allow installs from your browser or file manager when prompted.
 
 ### Prerequisites
 
