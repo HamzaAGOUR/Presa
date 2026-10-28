@@ -360,6 +360,12 @@ Created by **El Mahdi Cherkane**, **Omar Moussaid** and **Hamza Agour** — **ES
 - [DSA Visualizer on GitHub](https://github.com/MehdiCherkane/dsa-visualizer)
 - [Presa on GitHub](https://github.com/HamzaAGOUR/Presa)
 
+## Branding
+
+<p><img src="docs/branding/presa-icon.svg" width="96" alt="Presa launcher icon: a gold presentation remote with a seven-node blue network on a deep navy field" /></p>
+
+The icon keeps the supplied remote-and-network idea: a gold capsule on a deep navy zellige field, a dark screen, and a seven-node periwinkle tree whose outer branches spill onto the remote body. It ships as an adaptive launcher icon, a round icon, and an Android 13+ monochrome themed icon; the in-app header mark uses the same foreground. See [docs/branding/presa-icon.html](docs/branding/presa-icon.html) for size and mask previews, and [icon-refined.html](docs/branding/icon-refined.html) for the exploration that led to this direction.
+
 ## License
 
 [MIT](LICENSE) © 2026 EL MAHDI CHERKANE.

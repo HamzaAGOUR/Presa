@@ -1,47 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Presa mark: a gold presentation screen with a pie chart and two text lines,
-  broadcasting over Bluetooth. The screen contents are punched out with
-  evenOdd so the navy adaptive background shows through them.
+  Presa launcher foreground, variant E ("Spilling branches").
+
+  A gold presentation remote with a dark screen and a seven-node periwinkle
+  tree. The outer branch nodes deliberately overflow the screen and sit on the
+  gold body, echoing the node network in the original Presa mark. The artwork
+  is kept inside the 66 dp adaptive-icon safe zone so round, squircle, and
+  rounded-square masks all show the complete remote.
 -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
 
+    <!-- Soft drop shadow, offset just enough to lift the remote off the field. -->
     <path
-        android:fillColor="@color/presa_icon_gold"
-        android:fillType="evenOdd"
-        android:pathData="M34.5,48 H73.5 A4.5,4.5 0 0 1 78,52.5 V71.5 A4.5,4.5 0 0 1 73.5,76 H34.5 A4.5,4.5 0 0 1 30,71.5 V52.5 A4.5,4.5 0 0 1 34.5,48 Z M45.5,62 L45.5,53.5 A8.5,8.5 0 1 1 54,62 Z M58,55.5 H68.5 A1.5,1.5 0 0 1 68.5,58.5 H58 A1.5,1.5 0 0 1 58,55.5 Z M58,65 H65.5 A1.5,1.5 0 0 1 65.5,68 H58 A1.5,1.5 0 0 1 58,65 Z" />
+        android:fillAlpha="0.5"
+        android:fillColor="#040915"
+        android:pathData="M35.5,45.2 A19,19 0 0 1 73.5,45.2 V67.2 A19,19 0 0 1 35.5,67.2 Z" />
 
-    <path
-        android:fillColor="@color/presa_icon_gold"
-        android:pathData="M51.5,76 H56.5 V80.5 H51.5 Z" />
-    <path
-        android:fillColor="@color/presa_icon_gold"
-        android:pathData="M41,80.5 H67 A1.5,1.5 0 0 1 67,83.5 H41 A1.5,1.5 0 0 1 41,80.5 Z" />
+    <!-- Gold capsule body. -->
+    <path android:pathData="M35,43 A19,19 0 0 1 73,43 V65 A19,19 0 0 1 35,65 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerColor="@color/presa_icon_gold_mid"
+                android:endColor="@color/presa_icon_gold_deep"
+                android:endX="73"
+                android:endY="84"
+                android:startColor="@color/presa_icon_gold"
+                android:startX="35"
+                android:startY="24"
+                android:type="linear" />
+        </aapt:attr>
+    </path>
 
-    <group
-        android:scaleX="0.8"
-        android:scaleY="0.8"
-        android:translateX="44.51"
-        android:translateY="21.4">
-        <path
-            android:fillColor="@color/presa_icon_gold"
-            android:pathData="M17.71,7.71 L12,2 H11 V9.59 L6.41,5 L5,6.41 L10.59,12 L5,17.59 L6.41,19 L11,14.41 V22 H12 L17.71,16.29 L13.41,12 Z" />
-    </group>
+    <!-- Thin warm rim highlight. -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M36.3,43 A17.7,17.7 0 0 1 71.7,43 V65 A17.7,17.7 0 0 1 36.3,65 Z"
+        android:strokeAlpha="0.4"
+        android:strokeColor="#FFF4D6"
+        android:strokeWidth="0.9" />
+
+    <!-- Microphone slot. -->
+    <path
+        android:fillAlpha="0.8"
+        android:fillColor="#23254A"
+        android:pathData="M50.5,26.8 H57.5 A0.75,0.75 0 0 1 57.5,28.3 H50.5 A0.75,0.75 0 0 1 50.5,26.8 Z" />
+
+    <!-- Recessed screen. -->
+    <path
+        android:pathData="M48,30.5 H60 A7,7 0 0 1 67,37.5 V50.5 A7,7 0 0 1 60,57.5 H48 A7,7 0 0 1 41,50.5 V37.5 A7,7 0 0 1 48,30.5 Z"
+        android:strokeColor="#8C5C0D"
+        android:strokeWidth="0.7">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endColor="@color/presa_icon_screen_deep"
+                android:endX="54"
+                android:endY="57.5"
+                android:startColor="@color/presa_icon_screen"
+                android:startX="54"
+                android:startY="30.5"
+                android:type="linear" />
+        </aapt:attr>
+    </path>
+
+    <!-- Branch underlay keeps the light lines readable over gold. -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M54,35 L45,43 M54,35 L63,43 M45,43 L38,51 M45,43 L50,51 M63,43 L58,51 M63,43 L70,51"
+        android:strokeColor="@color/presa_icon_branch_shadow"
+        android:strokeLineCap="round"
+        android:strokeWidth="3" />
 
     <path
         android:fillColor="@android:color/transparent"
-        android:pathData="M45.97,40.58 A12.5,12.5 0 0 1 45.97,21.42"
-        android:strokeColor="@color/presa_icon_gold"
+        android:pathData="M54,35 L45,43 M54,35 L63,43 M45,43 L38,51 M45,43 L50,51 M63,43 L58,51 M63,43 L70,51"
+        android:strokeColor="@color/presa_icon_branch"
         android:strokeLineCap="round"
-        android:strokeWidth="2.2" />
+        android:strokeWidth="1.6" />
+
+    <!-- Seven network nodes; the outermost pair spills onto the body. -->
     <path
-        android:fillColor="@android:color/transparent"
-        android:pathData="M62.03,21.42 A12.5,12.5 0 0 1 62.03,40.58"
-        android:strokeColor="@color/presa_icon_gold"
-        android:strokeLineCap="round"
-        android:strokeWidth="2.2" />
+        android:fillColor="@color/presa_icon_node"
+        android:pathData="M54,32.5 A2.5,2.5 0 1 1 54,37.5 A2.5,2.5 0 1 1 54,32.5 Z"
+        android:strokeColor="@color/presa_icon_node_outline"
+        android:strokeWidth="1" />
+    <path
+        android:fillColor="@color/presa_icon_node"
+        android:pathData="M45,40.8 A2.2,2.2 0 1 1 45,45.2 A2.2,2.2 0 1 1 45,40.8 Z"
+        android:strokeColor="@color/presa_icon_node_outline"
+        android:strokeWidth="1" />
+    <path
+        android:fillColor="@color/presa_icon_node"
+        android:pathData="M63,40.8 A2.2,2.2 0 1 1 63,45.2 A2.2,2.2 0 1 1 63,40.8 Z"
+        android:strokeColor="@color/presa_icon_node_outline"
+        android:strokeWidth="1" />
+    <path
+        android:fillColor="@color/presa_icon_node"
+        android:pathData="M38,49.1 A1.9,1.9 0 1 1 38,52.9 A1.9,1.9 0 1 1 38,49.1 Z"
+        android:strokeColor="@color/presa_icon_node_outline"
+        android:strokeWidth="1" />
+    <path
+        android:fillColor="@color/presa_icon_node"
+        android:pathData="M50,49.1 A1.9,1.9 0 1 1 50,52.9 A1.9,1.9 0 1 1 50,49.1 Z"
+        android:strokeColor="@color/presa_icon_node_outline"
+        android:strokeWidth="1" />
+    <path
+        android:fillColor="@color/presa_icon_node"
+        android:pathData="M58,49.1 A1.9,1.9 0 1 1 58,52.9 A1.9,1.9 0 1 1 58,49.1 Z"
+        android:strokeColor="@color/presa_icon_node_outline"
+        android:strokeWidth="1" />
+    <path
+        android:fillColor="@color/presa_icon_node"
+        android:pathData="M70,49.1 A1.9,1.9 0 1 1 70,52.9 A1.9,1.9 0 1 1 70,49.1 Z"
+        android:strokeColor="@color/presa_icon_node_outline"
+        android:strokeWidth="1" />
+
+    <!-- Click button. -->
+    <path
+        android:fillColor="@color/presa_icon_button"
+        android:pathData="M54,62.8 A4.2,4.2 0 1 1 54,71.2 A4.2,4.2 0 1 1 54,62.8 Z"
+        android:strokeColor="#8C5C0D"
+        android:strokeWidth="0.8" />
+    <path
+        android:fillColor="@color/presa_icon_button_dot"
+        android:pathData="M54,65.4 A1.6,1.6 0 1 1 54,68.6 A1.6,1.6 0 1 1 54,65.4 Z" />
+
+    <!-- Speaker slots. -->
+    <path
+        android:fillColor="#14224A"
+        android:pathData="M48.8,75 H51.4 A1.3,1.3 0 0 1 51.4,77.6 H48.8 A1.3,1.3 0 0 1 48.8,75 Z" />
+    <path
+        android:fillColor="#14224A"
+        android:pathData="M56.6,75 H59.2 A1.3,1.3 0 0 1 59.2,77.6 H56.6 A1.3,1.3 0 0 1 56.6,75 Z" />
 </vector>

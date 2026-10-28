@@ -5,6 +5,19 @@
     <color name="presa_panel">#FFFFFF</color>
     <color name="presa_navy">#1F2A5C</color>
     <color name="presa_gold">#C9A227</color>
-    <color name="presa_icon_bg">#1F2A5C</color>
-    <color name="presa_icon_gold">#C9A227</color>
+
+    <!-- Launcher icon: deep navy field, warm gold remote, periwinkle network. -->
+    <color name="presa_icon_bg">#080E20</color>
+    <color name="presa_icon_bg_hi">#1C2C5B</color>
+    <color name="presa_icon_gold">#FFD985</color>
+    <color name="presa_icon_gold_mid">#F0B143</color>
+    <color name="presa_icon_gold_deep">#C57E0E</color>
+    <color name="presa_icon_screen">#14224A</color>
+    <color name="presa_icon_screen_deep">#070D1E</color>
+    <color name="presa_icon_node">#C2CFFF</color>
+    <color name="presa_icon_node_outline">#142044</color>
+    <color name="presa_icon_branch">#A3B8FF</color>
+    <color name="presa_icon_branch_shadow">#152247</color>
+    <color name="presa_icon_button">#14224A</color>
+    <color name="presa_icon_button_dot">#F6BD4E</color>
 </resources>

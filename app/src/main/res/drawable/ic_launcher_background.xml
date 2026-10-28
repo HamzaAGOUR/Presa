@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Presa launcher background: a deep navy gradient with a faint zellige star
+  lattice, echoing the geometric texture used across the app.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <path android:pathData="M0,0 H108 V108 H0 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endColor="@color/presa_icon_bg_hi"
+                android:endX="108"
+                android:endY="108"
+                android:startColor="@color/presa_icon_bg"
+                android:startX="0"
+                android:startY="0"
+                android:type="linear" />
+        </aapt:attr>
+    </path>
+
+    <path android:pathData="M0,0 H108 V108 H0 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="54"
+                android:centerY="45"
+                android:endColor="#00EAB24A"
+                android:gradientRadius="62"
+                android:startColor="#2EEAB24A"
+                android:type="radial" />
+        </aapt:attr>
+    </path>
+
+    <group android:translateX="30" android:translateY="30">
+        <path
+            android:fillColor="@android:color/transparent"
+            android:pathData="M0,-5 L1.2,-1.2 L5,0 L1.2,1.2 L0,5 L-1.2,1.2 L-5,0 L-1.2,-1.2 Z"
+            android:strokeColor="#109FB0DC"
+            android:strokeWidth="0.7" />
+        <path
+            android:fillColor="@android:color/transparent"
+            android:pathData="M0,-6.2 A6.2,6.2 0 1 1 0,6.2 A6.2,6.2 0 1 1 0,-6.2 Z"
+            android:strokeColor="#0A9FB0DC"
+            android:strokeWidth="0.6" />
+    </group>
+
+    <group android:translateX="54" android:translateY="18">
+        <path
+            android:fillColor="@android:color/transparent"
+            android:pathData="M0,-5 L1.2,-1.2 L5,0 L1.2,1.2 L0,5 L-1.2,1.2 L-5,0 L-1.2,-1.2 Z"
+            android:strokeColor="#109FB0DC"
+            android:strokeWidth="0.7" />
+    </group>
+
+    <group android:translateX="78" android:translateY="30">
+        <path
+            android:fillColor="@android:color/transparent"
+            android:pathData="M0,-5 L1.2,-1.2 L5,0 L1.2,1.2 L0,5 L-1.2,1.2 L-5,0 L-1.2,-1.2 Z"
+            android:strokeColor="#109FB0DC"
+            android:strokeWidth="0.7" />
+        <path
+            android:fillColor="@android:color/transparent"
+            android:pathData="M0,-6.2 A6.2,6.2 0 1 1 0,6.2 A6.2,6.2 0 1 1 0,-6.2 Z"
+            android:strokeColor="#0A9FB0DC"
+            android:strokeWidth="0.6" />
+    </group>
+
+    <group android:translateX="24" android:translateY="54">
+        <path
+            android:fillColor="@android:color/transparent"
+            android:pathData="M0,-5 L1.2,-1.2 L5,0 L1.2,1.2 L0,5 L-1.2,1.2 L-5,0 L-1.2,-1.2 Z"
+            android:strokeColor="#109FB0DC"
+            android:strokeWidth="0.7" />
+        <path
+            android:fillColor="@android:color/transparent"
+            android:pathData="M0,-6.2 A6.2,6.2 0 1 1 0,6.2 A6.2,6.2 0 1 1 0,-6.2 Z"
+            android:strokeColor="#0A9FB0DC"
+            android:strokeWidth="0.6" />
+    </group>
+
+    <group android:translateX="84" android:translateY="54">
+        <path
+            android:fillColor="@android:color/transparent"
+            android:pathData="M0,-5 L1.2,-1.2 L5,0 L1.2,1.2 L0,5 L-1.2,1.2 L-5,0 L-1.2,-1.2 Z"
+            android:strokeColor="#109FB0DC"
+            android:strokeWidth="0.7" />
+        <path
+            android:fillColor="@android:color/transparent"
+            android:pathData="M0,-6.2 A6.2,6.2 0 1 1 0,6.2 A6.2,6.2 0 1 1 0,-6.2 Z"
+            android:strokeColor="#0A9FB0DC"
+            android:strokeWidth="0.6" />
+    </group>
+
+    <group android:translateX="30" android:translateY="78">
+        <path
+            android:fillColor="@android:color/transparent"
+            android:pathData="M0,-5 L1.2,-1.2 L5,0 L1.2,1.2 L0,5 L-1.2,1.2 L-5,0 L-1.2,-1.2 Z"
+            android:strokeColor="#109FB0DC"
+            android:strokeWidth="0.7" />
+        <path
+            android:fillColor="@android:color/transparent"
+            android:pathData="M0,-6.2 A6.2,6.2 0 1 1 0,6.2 A6.2,6.2 0 1 1 0,-6.2 Z"
+            android:strokeColor="#0A9FB0DC"
+            android:strokeWidth="0.6" />
+    </group>
+
+    <group android:translateX="54" android:translateY="90">
+        <path
+            android:fillColor="@android:color/transparent"
+            android:pathData="M0,-5 L1.2,-1.2 L5,0 L1.2,1.2 L0,5 L-1.2,1.2 L-5,0 L-1.2,-1.2 Z"
+            android:strokeColor="#109FB0DC"
+            android:strokeWidth="0.7" />
+    </group>
+
+    <group android:translateX="78" android:translateY="78">
+        <path
+            android:fillColor="@android:color/transparent"
+            android:pathData="M0,-5 L1.2,-1.2 L5,0 L1.2,1.2 L0,5 L-1.2,1.2 L-5,0 L-1.2,-1.2 Z"
+            android:strokeColor="#109FB0DC"
+            android:strokeWidth="0.7" />
+        <path
+            android:fillColor="@android:color/transparent"
+            android:pathData="M0,-6.2 A6.2,6.2 0 1 1 0,6.2 A6.2,6.2 0 1 1 0,-6.2 Z"
+            android:strokeColor="#0A9FB0DC"
+            android:strokeWidth="0.6" />
+    </group>
+</vector>

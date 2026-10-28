@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Single-colour silhouette used by Android 13+ themed icons. -->
+<!--
+  Single-colour silhouette used by Android 13+ themed icons.
+
+  The remote is a solid white capsule; the screen, microphone slot, button ring,
+  and speaker slots are punched out with evenOdd. A simplified white network
+  stays inside the screen so it remains legible after the system tints the
+  layer at launcher size.
+-->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
@@ -9,32 +16,38 @@
     <path
         android:fillColor="@android:color/white"
         android:fillType="evenOdd"
-        android:pathData="M34.5,48 H73.5 A4.5,4.5 0 0 1 78,52.5 V71.5 A4.5,4.5 0 0 1 73.5,76 H34.5 A4.5,4.5 0 0 1 30,71.5 V52.5 A4.5,4.5 0 0 1 34.5,48 Z M45.5,62 L45.5,53.5 A8.5,8.5 0 1 1 54,62 Z M58,55.5 H68.5 A1.5,1.5 0 0 1 68.5,58.5 H58 A1.5,1.5 0 0 1 58,55.5 Z M58,65 H65.5 A1.5,1.5 0 0 1 65.5,68 H58 A1.5,1.5 0 0 1 58,65 Z" />
-    <path
-        android:fillColor="@android:color/white"
-        android:pathData="M51.5,76 H56.5 V80.5 H51.5 Z" />
-    <path
-        android:fillColor="@android:color/white"
-        android:pathData="M41,80.5 H67 A1.5,1.5 0 0 1 67,83.5 H41 A1.5,1.5 0 0 1 41,80.5 Z" />
-    <group
-        android:scaleX="0.8"
-        android:scaleY="0.8"
-        android:translateX="44.51"
-        android:translateY="21.4">
-        <path
-            android:fillColor="@android:color/white"
-            android:pathData="M17.71,7.71 L12,2 H11 V9.59 L6.41,5 L5,6.41 L10.59,12 L5,17.59 L6.41,19 L11,14.41 V22 H12 L17.71,16.29 L13.41,12 Z" />
-    </group>
+        android:pathData="M35,43 A19,19 0 0 1 73,43 V65 A19,19 0 0 1 35,65 Z M48,30.5 H60 A7,7 0 0 1 67,37.5 V50.5 A7,7 0 0 1 60,57.5 H48 A7,7 0 0 1 41,50.5 V37.5 A7,7 0 0 1 48,30.5 Z M50.5,26.8 H57.5 A0.75,0.75 0 0 1 57.5,28.3 H50.5 A0.75,0.75 0 0 1 50.5,26.8 Z M54,62.8 A4.2,4.2 0 1 1 54,71.2 A4.2,4.2 0 1 1 54,62.8 Z M48.8,75 H51.4 A1.3,1.3 0 0 1 51.4,77.6 H48.8 A1.3,1.3 0 0 1 48.8,75 Z M56.6,75 H59.2 A1.3,1.3 0 0 1 59.2,77.6 H56.6 A1.3,1.3 0 0 1 56.6,75 Z" />
+
     <path
         android:fillColor="@android:color/transparent"
-        android:pathData="M45.97,40.58 A12.5,12.5 0 0 1 45.97,21.42"
+        android:pathData="M54,35 L46,44 M54,35 L62,44 M46,44 L43,52 M46,44 L50,52 M62,44 L58,52 M62,44 L65,52"
         android:strokeColor="@android:color/white"
         android:strokeLineCap="round"
-        android:strokeWidth="2.2" />
+        android:strokeWidth="1.8" />
+
     <path
-        android:fillColor="@android:color/transparent"
-        android:pathData="M62.03,21.42 A12.5,12.5 0 0 1 62.03,40.58"
-        android:strokeColor="@android:color/white"
-        android:strokeLineCap="round"
-        android:strokeWidth="2.2" />
+        android:fillColor="@android:color/white"
+        android:pathData="M54,32.9 A2.1,2.1 0 1 1 54,37.1 A2.1,2.1 0 1 1 54,32.9 Z" />
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M46,42.1 A1.9,1.9 0 1 1 46,45.9 A1.9,1.9 0 1 1 46,42.1 Z" />
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M62,42.1 A1.9,1.9 0 1 1 62,45.9 A1.9,1.9 0 1 1 62,42.1 Z" />
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M43,50.3 A1.7,1.7 0 1 1 43,53.7 A1.7,1.7 0 1 1 43,50.3 Z" />
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M50,50.3 A1.7,1.7 0 1 1 50,53.7 A1.7,1.7 0 1 1 50,50.3 Z" />
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M58,50.3 A1.7,1.7 0 1 1 58,53.7 A1.7,1.7 0 1 1 58,50.3 Z" />
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M65,50.3 A1.7,1.7 0 1 1 65,53.7 A1.7,1.7 0 1 1 65,50.3 Z" />
+
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M54,65.5 A1.5,1.5 0 1 1 54,68.5 A1.5,1.5 0 1 1 54,65.5 Z" />
 </vector>

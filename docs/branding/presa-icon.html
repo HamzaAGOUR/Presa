@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Presa icon — final</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 36px; background: #070b18; color: #eef1ff; font: 14px/1.55 "Segoe UI", system-ui, sans-serif; }
+  h1 { margin: 0 0 4px; font-size: 26px; letter-spacing: -.02em; }
+  h2 { font-size: 14px; margin: 0 0 14px; color: #dbe2ff; font-weight: 650; }
+  p { margin: 0 0 28px; color: #aab4d6; max-width: 780px; }
+  .grid { display: flex; gap: 28px; flex-wrap: wrap; align-items: flex-start; }
+  .card { background: #0e142a; border: 1px solid #283357; border-radius: 22px; padding: 22px; }
+  .sizes { display: flex; align-items: flex-end; gap: 24px; }
+  .shot { display: flex; flex-direction: column; align-items: center; gap: 9px; }
+  .icon { display: block; overflow: hidden; background: #080e20; box-shadow: 0 18px 42px #0008; }
+  .rounded { border-radius: 22.5%; }
+  .circle { border-radius: 50%; }
+  .squircle { border-radius: 34%; }
+  .x512 { width: 260px; height: 260px; }
+  .x144 { width: 144px; height: 144px; }
+  .x96 { width: 96px; height: 96px; }
+  .x48 { width: 48px; height: 48px; }
+  .label { color: #7f8ab0; font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
+  .mono-row { display: flex; gap: 22px; align-items: flex-end; }
+  .mono-tile { border-radius: 22.5%; padding: 16px; display: grid; place-items: center; }
+  .mono-dark { background: #1c2c5b; color: #ffffff; }
+  .mono-light { background: #c2cfff; color: #080e20; }
+  .mono-tile svg { width: 96px; height: 96px; display: block; }
+  .appmark { position: relative; overflow: hidden; border-radius: 28%; background: linear-gradient(135deg, #080e20, #1c2c5b); box-shadow: 0 16px 34px #0007; }
+  .appmark svg { position: absolute; left: -20%; top: -20%; width: 140%; height: 140%; display: block; }
+  .appmark.x80 { width: 80px; height: 80px; }
+  .appmark.x40 { width: 40px; height: 40px; }
+  .note { color: #8995bb; font-size: 12px; margin-top: 12px; max-width: 300px; }
+  .swatches { display: flex; gap: 8px; margin-top: 6px; }
+  .swatch { width: 28px; height: 28px; border-radius: 9px; border: 1px solid #ffffff22; }
+  .safe { position: relative; width: 260px; height: 260px; }
+  .safe svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .safe .ring { position: absolute; left: 18.5%; top: 18.5%; width: 63%; height: 63%; border: 1.5px dashed #ffffff66; border-radius: 50%; }
+  .safe .crop { position: absolute; left: 0; top: 0; width: 66.66%; height: 66.66%; border: 1px solid #ff7a7a66; }
+  .legend { color: #8995bb; font-size: 11px; margin-top: 10px; }
+  code { color: #ffd985; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<h1>Presa — final launcher icon</h1>
+<p>Variant E, “Spilling branches”, applied to the adaptive icon. The remote sits inside the 66 dp safe zone; the outer branch nodes deliberately spill from the screen onto the gold body. The same foreground is used by the in-app header mark.</p>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="108" y2="108" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#080e20"/>
+      <stop offset="1" stop-color="#1c2c5b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="54" cy="45" r="62" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#eab24a" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#eab24a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="35" y1="24" x2="73" y2="84" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffd985"/>
+      <stop offset=".5" stop-color="#f0b143"/>
+      <stop offset="1" stop-color="#c57e0e"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="54" y1="30.5" x2="54" y2="57.5" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#14224a"/>
+      <stop offset="1" stop-color="#070d1e"/>
+    </linearGradient>
+
+    <path id="star" d="M0,-5 L1.2,-1.2 L5,0 L1.2,1.2 L0,5 L-1.2,1.2 L-5,0 L-1.2,-1.2 Z"
+          fill="none" stroke="#9fb0dc" stroke-opacity=".063" stroke-width=".7"/>
+    <circle id="starRing" r="6.2" fill="none" stroke="#9fb0dc" stroke-opacity=".039" stroke-width=".6"/>
+
+    <g id="stars">
+      <g transform="translate(30,30)"><use href="#star"/><use href="#starRing"/></g>
+      <g transform="translate(54,18)"><use href="#star"/></g>
+      <g transform="translate(78,30)"><use href="#star"/><use href="#starRing"/></g>
+      <g transform="translate(24,54)"><use href="#star"/><use href="#starRing"/></g>
+      <g transform="translate(84,54)"><use href="#star"/><use href="#starRing"/></g>
+      <g transform="translate(30,78)"><use href="#star"/><use href="#starRing"/></g>
+      <g transform="translate(54,90)"><use href="#star"/></g>
+      <g transform="translate(78,78)"><use href="#star"/><use href="#starRing"/></g>
+    </g>
+
+    <g id="presaForeground">
+      <path d="M35.5,45.2 A19,19 0 0 1 73.5,45.2 V67.2 A19,19 0 0 1 35.5,67.2 Z" fill="#040915" opacity=".5"/>
+      <path d="M35,43 A19,19 0 0 1 73,43 V65 A19,19 0 0 1 35,65 Z" fill="url(#gold)"/>
+      <path d="M36.3,43 A17.7,17.7 0 0 1 71.7,43 V65 A17.7,17.7 0 0 1 36.3,65 Z" fill="none" stroke="#fff4d6" stroke-opacity=".4" stroke-width=".9"/>
+      <path d="M50.5,26.8 H57.5 A.75,.75 0 0 1 57.5,28.3 H50.5 A.75,.75 0 0 1 50.5,26.8 Z" fill="#23254a" opacity=".8"/>
+      <path d="M48,30.5 H60 A7,7 0 0 1 67,37.5 V50.5 A7,7 0 0 1 60,57.5 H48 A7,7 0 0 1 41,50.5 V37.5 A7,7 0 0 1 48,30.5 Z" fill="url(#screen)" stroke="#8c5c0d" stroke-width=".7"/>
+
+      <path d="M54,35 L45,43 M54,35 L63,43 M45,43 L38,51 M45,43 L50,51 M63,43 L58,51 M63,43 L70,51" fill="none" stroke="#152247" stroke-width="3" stroke-linecap="round"/>
+      <path d="M54,35 L45,43 M54,35 L63,43 M45,43 L38,51 M45,43 L50,51 M63,43 L58,51 M63,43 L70,51" fill="none" stroke="#a3b8ff" stroke-width="1.6" stroke-linecap="round"/>
+
+      <g fill="#c2cfff" stroke="#142044" stroke-width="1">
+        <circle cx="54" cy="35" r="2.5"/><circle cx="45" cy="43" r="2.2"/><circle cx="63" cy="43" r="2.2"/>
+        <circle cx="38" cy="51" r="1.9"/><circle cx="50" cy="51" r="1.9"/><circle cx="58" cy="51" r="1.9"/><circle cx="70" cy="51" r="1.9"/>
+      </g>
+
+      <circle cx="54" cy="67" r="4.2" fill="#14224a" stroke="#8c5c0d" stroke-width=".8"/>
+      <circle cx="54" cy="67" r="1.6" fill="#f6bd4e"/>
+      <rect x="47.5" y="75" width="5.2" height="2.6" rx="1.3" fill="#14224a"/>
+      <rect x="55.3" y="75" width="5.2" height="2.6" rx="1.3" fill="#14224a"/>
+    </g>
+
+    <g id="presaIcon">
+      <rect width="108" height="108" fill="url(#bg)"/>
+      <rect width="108" height="108" fill="url(#glow)"/>
+      <use href="#stars"/>
+      <use href="#presaForeground"/>
+    </g>
+
+    <g id="presaMono">
+      <path fill="currentColor" fill-rule="evenodd" d="M35,43 A19,19 0 0 1 73,43 V65 A19,19 0 0 1 35,65 Z M48,30.5 H60 A7,7 0 0 1 67,37.5 V50.5 A7,7 0 0 1 60,57.5 H48 A7,7 0 0 1 41,50.5 V37.5 A7,7 0 0 1 48,30.5 Z M50.5,26.8 H57.5 A.75,.75 0 0 1 57.5,28.3 H50.5 A.75,.75 0 0 1 50.5,26.8 Z M54,62.8 A4.2,4.2 0 1 1 54,71.2 A4.2,4.2 0 1 1 54,62.8 Z M48.8,75 H51.4 A1.3,1.3 0 0 1 51.4,77.6 H48.8 A1.3,1.3 0 0 1 48.8,75 Z M56.6,75 H59.2 A1.3,1.3 0 0 1 59.2,77.6 H56.6 A1.3,1.3 0 0 1 56.6,75 Z"/>
+      <path d="M54,35 L46,44 M54,35 L62,44 M46,44 L43,52 M46,44 L50,52 M62,44 L58,52 M62,44 L65,52" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <g fill="currentColor">
+        <circle cx="54" cy="35" r="2.1"/><circle cx="46" cy="44" r="1.9"/><circle cx="62" cy="44" r="1.9"/>
+        <circle cx="43" cy="52" r="1.7"/><circle cx="50" cy="52" r="1.7"/><circle cx="58" cy="52" r="1.7"/><circle cx="65" cy="52" r="1.7"/>
+        <circle cx="54" cy="67" r="1.5"/>
+      </g>
+    </g>
+
+
+  </defs>
+</svg>
+
+<div class="grid">
+
+  <div class="card">
+    <h2>Adaptive icon — full colour</h2>
+    <div class="sizes">
+      <div class="shot"><div class="icon rounded x512"><svg viewBox="18 18 72 72" width="100%" height="100%"><use href="#presaIcon"/></svg></div><span class="label">512</span></div>
+      <div class="shot"><div class="icon rounded x144"><svg viewBox="18 18 72 72" width="100%" height="100%"><use href="#presaIcon"/></svg></div><span class="label">144</span></div>
+      <div class="shot"><div class="icon rounded x48"><svg viewBox="18 18 72 72" width="100%" height="100%"><use href="#presaIcon"/></svg></div><span class="label">48</span></div>
+    </div>
+    <div class="note">Android 8+ adaptive icon: <code>ic_launcher_foreground</code> over <code>ic_launcher_background</code>.</div>
+  </div>
+
+  <div class="card">
+    <h2>Mask checks</h2>
+    <div class="sizes">
+      <div class="shot"><div class="icon circle x144"><svg viewBox="18 18 72 72" width="100%" height="100%"><use href="#presaIcon"/></svg></div><span class="label">Circle</span></div>
+      <div class="shot"><div class="icon squircle x144"><svg viewBox="18 18 72 72" width="100%" height="100%"><use href="#presaIcon"/></svg></div><span class="label">Squircle</span></div>
+      <div class="shot"><div class="icon rounded x144"><svg viewBox="18 18 72 72" width="100%" height="100%"><use href="#presaIcon"/></svg></div><span class="label">Rounded</span></div>
+    </div>
+    <div class="note">The remote clears the 66 dp safe circle; the outermost nodes stay just inside the gold body.</div>
+  </div>
+
+  <div class="card">
+    <h2>Android 13+ themed icon</h2>
+    <div class="mono-row">
+      <div class="shot"><div class="mono-tile mono-dark"><svg viewBox="18 18 72 72"><use href="#presaMono"/></svg></div><span class="label">Dark tint</span></div>
+      <div class="shot"><div class="mono-tile mono-light"><svg viewBox="18 18 72 72"><use href="#presaMono"/></svg></div><span class="label">Light tint</span></div>
+    </div>
+    <div class="note">Single-colour <code>ic_launcher_monochrome</code>: solid remote, punched-out screen and controls, and a simplified in-screen network for small-size clarity.</div>
+  </div>
+
+  <div class="card">
+    <h2>Safe-zone diagram</h2>
+    <div class="safe">
+      <svg viewBox="0 0 108 108"><use href="#presaIcon"/></svg>
+      <div class="ring"></div>
+      <div class="crop"></div>
+    </div>
+    <div class="legend">Dashed: 66 dp safe circle. Red: 72 dp visible square before mask cropping.</div>
+  </div>
+
+  <div class="card">
+    <h2>In-app header mark</h2>
+    <div class="sizes" style="align-items:center">
+      <div class="shot"><div class="appmark x80"><svg viewBox="0 0 108 108"><use href="#presaForeground"/></svg></div><span class="label">80 px</span></div>
+      <div class="shot"><div class="appmark x40"><svg viewBox="0 0 108 108"><use href="#presaForeground"/></svg></div><span class="label">40 px</span></div>
+    </div>
+    <div class="note"><code>PresaMark</code> uses the same foreground at 1.4× inside the rounded navy gradient tile.</div>
+  </div>
+
+  <div class="card">
+    <h2>Palette</h2>
+    <div class="swatches">
+      <span class="swatch" style="background:#080e20"></span>
+      <span class="swatch" style="background:#1c2c5b"></span>
+      <span class="swatch" style="background:#ffd985"></span>
+      <span class="swatch" style="background:#f0b143"></span>
+      <span class="swatch" style="background:#c57e0e"></span>
+      <span class="swatch" style="background:#14224a"></span>
+      <span class="swatch" style="background:#a3b8ff"></span>
+      <span class="swatch" style="background:#c2cfff"></span>
+    </div>
+    <div class="note">Deep navy field, gold capsule, periwinkle network. The same palette drives the in-app header mark.</div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Presa icon exploration</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; padding: 32px; background: #070b18; color: #eef1ff; font: 14px/1.5 "Segoe UI", system-ui, sans-serif; }
+  h1 { margin: 0 0 4px; font-size: 24px; }
+  p { margin: 0 0 28px; color: #aab4d6; }
+  .grid { display: flex; gap: 36px; flex-wrap: wrap; }
+  .card { background: #0e142a; border: 1px solid #283357; border-radius: 22px; padding: 22px; }
+  .card h2 { font-size: 15px; margin: 0 0 12px; color: #dbe2ff; }
+  .sizes { display: flex; align-items: end; gap: 22px; }
+  .icon { display: block; border-radius: 22.5%; overflow: hidden; box-shadow: 0 16px 36px #0007; }
+  .x512 { width: 260px; height: 260px; }
+  .x144 { width: 144px; height: 144px; }
+  .x48 { width: 48px; height: 48px; }
+  .label { color: #7f8ab0; font-size: 11px; margin-top: 8px; text-align: center; }
+  .tiny { display: flex; gap: 14px; align-items: end; margin-top: 18px; }
+</style>
+</head>
+<body>
+<h1>Presa — logo exploration</h1>
+<p>Refining the supplied remote + node-network mark for launcher use.</p>
+<div class="grid">
+
+  <div class="card">
+    <h2>A — Network screen</h2>
+    <div class="sizes">
+      <div>
+        <svg class="icon x512" viewBox="0 0 108 108" aria-label="Variant A">
+          <defs>
+            <linearGradient id="bgA" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#0a1125"/><stop offset="1" stop-color="#1b2b58"/>
+            </linearGradient>
+            <linearGradient id="goldA" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffd37d"/><stop offset=".55" stop-color="#efaf3d"/><stop offset="1" stop-color="#c98213"/>
+            </linearGradient>
+            <linearGradient id="screenA" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#101b3b"/><stop offset="1" stop-color="#080e21"/>
+            </linearGradient>
+            <pattern id="patA" width="18" height="18" patternUnits="userSpaceOnUse">
+              <path d="M9 2.4 10.8 7.2 15.6 9 10.8 10.8 9 15.6 7.2 10.8 2.4 9 7.2 7.2Z" fill="none" stroke="#9fb0dc" stroke-opacity=".08" stroke-width=".7"/>
+              <circle cx="9" cy="9" r="6.2" fill="none" stroke="#9fb0dc" stroke-opacity=".055" stroke-width=".6"/>
+            </pattern>
+          </defs>
+          <rect width="108" height="108" fill="url(#bgA)"/>
+          <rect width="108" height="108" fill="url(#patA)"/>
+          <rect x="37" y="21" width="34" height="66" rx="17" fill="#08101f" opacity=".5"/>
+          <rect x="37.5" y="20.5" width="33" height="65" rx="16.5" fill="url(#goldA)"/>
+          <rect x="39.2" y="22.2" width="29.6" height="61.6" rx="14.8" fill="none" stroke="#fff2cf" stroke-opacity=".38" stroke-width="1"/>
+          <rect x="41.5" y="28" width="25" height="29" rx="6.5" fill="url(#screenA)" stroke="#7e5712" stroke-width=".7"/>
+          <g stroke="#8fa6f4" stroke-width="1.5" stroke-linecap="round">
+            <path d="M54 34.6 46.2 43.4M54 34.6 61.8 43.4M46.2 43.4 50.2 51.5M61.8 43.4 57.8 51.5M50.2 51.5 57.8 51.5"/>
+          </g>
+          <g fill="#b8c7ff" stroke="#172448" stroke-width=".7">
+            <circle cx="54" cy="34.6" r="2.2"/>
+            <circle cx="46.2" cy="43.4" r="2"/>
+            <circle cx="61.8" cy="43.4" r="2"/>
+            <circle cx="50.2" cy="51.5" r="1.8"/>
+            <circle cx="57.8" cy="51.5" r="1.8"/>
+          </g>
+          <circle cx="54" cy="65" r="4.4" fill="#14224a" stroke="#8a5b10" stroke-width=".8"/>
+          <circle cx="54" cy="65" r="1.7" fill="#f4b747"/>
+          <rect x="47" y="74" width="5.2" height="2.6" rx="1.3" fill="#14224a"/>
+          <rect x="55.8" y="74" width="5.2" height="2.6" rx="1.3" fill="#14224a"/>
+          <rect x="50.5" y="80" width="7" height="2.6" rx="1.3" fill="#14224a"/>
+        </svg>
+        <div class="label">512</div>
+      </div>
+      <div>
+        <svg class="icon x144" viewBox="0 0 108 108" aria-label="Variant A small">
+          <defs>
+            <linearGradient id="bgA2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1125"/><stop offset="1" stop-color="#1b2b58"/></linearGradient>
+            <linearGradient id="goldA2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd37d"/><stop offset=".55" stop-color="#efaf3d"/><stop offset="1" stop-color="#c98213"/></linearGradient>
+            <pattern id="patA2" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M9 2.4 10.8 7.2 15.6 9 10.8 10.8 9 15.6 7.2 10.8 2.4 9 7.2 7.2Z" fill="none" stroke="#9fb0dc" stroke-opacity=".08" stroke-width=".7"/></pattern>
+          </defs>
+          <rect width="108" height="108" fill="url(#bgA2)"/><rect width="108" height="108" fill="url(#patA2)"/>
+          <rect x="37" y="21" width="34" height="66" rx="17" fill="#08101f" opacity=".5"/>
+          <rect x="37.5" y="20.5" width="33" height="65" rx="16.5" fill="url(#goldA2)"/>
+          <rect x="39.2" y="22.2" width="29.6" height="61.6" rx="14.8" fill="none" stroke="#fff2cf" stroke-opacity=".38" stroke-width="1"/>
+          <rect x="41.5" y="28" width="25" height="29" rx="6.5" fill="#0a1125" stroke="#7e5712" stroke-width=".7"/>
+          <g stroke="#8fa6f4" stroke-width="1.5" stroke-linecap="round"><path d="M54 34.6 46.2 43.4M54 34.6 61.8 43.4M46.2 43.4 50.2 51.5M61.8 43.4 57.8 51.5M50.2 51.5 57.8 51.5"/></g>
+          <g fill="#b8c7ff" stroke="#172448" stroke-width=".7"><circle cx="54" cy="34.6" r="2.2"/><circle cx="46.2" cy="43.4" r="2"/><circle cx="61.8" cy="43.4" r="2"/><circle cx="50.2" cy="51.5" r="1.8"/><circle cx="57.8" cy="51.5" r="1.8"/></g>
+          <circle cx="54" cy="65" r="4.4" fill="#14224a" stroke="#8a5b10" stroke-width=".8"/><circle cx="54" cy="65" r="1.7" fill="#f4b747"/>
+          <rect x="47" y="74" width="5.2" height="2.6" rx="1.3" fill="#14224a"/><rect x="55.8" y="74" width="5.2" height="2.6" rx="1.3" fill="#14224a"/><rect x="50.5" y="80" width="7" height="2.6" rx="1.3" fill="#14224a"/>
+        </svg>
+        <div class="label">144</div>
+      </div>
+      <div>
+        <svg class="icon x48" viewBox="0 0 108 108" aria-label="Variant A tiny">
+          <defs>
+            <linearGradient id="goldA3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd37d"/><stop offset=".55" stop-color="#efaf3d"/><stop offset="1" stop-color="#c98213"/></linearGradient>
+          </defs>
+          <rect width="108" height="108" fill="#0b142b"/><rect x="37" y="21" width="34" height="66" rx="17" fill="#08101f" opacity=".5"/>
+          <rect x="37.5" y="20.5" width="33" height="65" rx="16.5" fill="url(#goldA3)"/>
+          <rect x="41.5" y="28" width="25" height="29" rx="6.5" fill="#0a1125"/>
+          <g stroke="#8fa6f4" stroke-width="1.5" stroke-linecap="round"><path d="M54 34.6 46.2 43.4M54 34.6 61.8 43.4M46.2 43.4 50.2 51.5M61.8 43.4 57.8 51.5M50.2 51.5 57.8 51.5"/></g>
+          <g fill="#b8c7ff"><circle cx="54" cy="34.6" r="2.2"/><circle cx="46.2" cy="43.4" r="2"/><circle cx="61.8" cy="43.4" r="2"/><circle cx="50.2" cy="51.5" r="1.8"/><circle cx="57.8" cy="51.5" r="1.8"/></g>
+          <circle cx="54" cy="65" r="4.4" fill="#14224a"/><circle cx="54" cy="65" r="1.7" fill="#f4b747"/>
+          <rect x="47" y="74" width="5.2" height="2.6" rx="1.3" fill="#14224a"/><rect x="55.8" y="74" width="5.2" height="2.6" rx="1.3" fill="#14224a"/><rect x="50.5" y="80" width="7" height="2.6" rx="1.3" fill="#14224a"/>
+        </svg>
+        <div class="label">48</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>B — Network crown</h2>
+    <div class="sizes">
+      <div>
+        <svg class="icon x512" viewBox="0 0 108 108" aria-label="Variant B">
+          <defs>
+            <linearGradient id="bgB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1125"/><stop offset="1" stop-color="#1b2b58"/></linearGradient>
+            <linearGradient id="goldB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd37d"/><stop offset=".55" stop-color="#efaf3d"/><stop offset="1" stop-color="#c98213"/></linearGradient>
+            <pattern id="patB" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M9 2.4 10.8 7.2 15.6 9 10.8 10.8 9 15.6 7.2 10.8 2.4 9 7.2 7.2Z" fill="none" stroke="#9fb0dc" stroke-opacity=".08" stroke-width=".7"/><circle cx="9" cy="9" r="6.2" fill="none" stroke="#9fb0dc" stroke-opacity=".055" stroke-width=".6"/></pattern>
+          </defs>
+          <rect width="108" height="108" fill="url(#bgB)"/><rect width="108" height="108" fill="url(#patB)"/>
+          <rect x="39" y="20" width="30" height="67" rx="15" fill="#08101f" opacity=".5"/>
+          <rect x="39.5" y="19.5" width="29" height="66" rx="14.5" fill="url(#goldB)"/>
+          <rect x="41.2" y="21.2" width="25.6" height="62.6" rx="12.8" fill="none" stroke="#fff2cf" stroke-opacity=".38" stroke-width="1"/>
+          <circle cx="54" cy="67" r="4.2" fill="#14224a" stroke="#8a5b10" stroke-width=".8"/><circle cx="54" cy="67" r="1.6" fill="#f4b747"/>
+          <rect x="48" y="76" width="5" height="2.4" rx="1.2" fill="#14224a"/><rect x="55" y="76" width="5" height="2.4" rx="1.2" fill="#14224a"/>
+          <g stroke="#16234a" stroke-width="3.2" stroke-linecap="round"><path d="M54 29 44 39M54 29 64 39M44 39 34 50M44 39 49 50M64 39 59 50M64 39 74 50"/></g>
+          <g stroke="#a9bcff" stroke-width="1.7" stroke-linecap="round"><path d="M54 29 44 39M54 29 64 39M44 39 34 50M44 39 49 50M64 39 59 50M64 39 74 50"/></g>
+          <g fill="#c3d0ff" stroke="#16234a" stroke-width="1.2">
+            <circle cx="54" cy="29" r="2.7"/><circle cx="44" cy="39" r="2.4"/><circle cx="64" cy="39" r="2.4"/>
+            <circle cx="34" cy="50" r="2.1"/><circle cx="49" cy="50" r="2.1"/><circle cx="59" cy="50" r="2.1"/><circle cx="74" cy="50" r="2.1"/>
+          </g>
+        </svg>
+        <div class="label">512</div>
+      </div>
+      <div>
+        <svg class="icon x144" viewBox="0 0 108 108" aria-label="Variant B small">
+          <defs>
+            <linearGradient id="bgB2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1125"/><stop offset="1" stop-color="#1b2b58"/></linearGradient>
+            <linearGradient id="goldB2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd37d"/><stop offset=".55" stop-color="#efaf3d"/><stop offset="1" stop-color="#c98213"/></linearGradient>
+          </defs>
+          <rect width="108" height="108" fill="url(#bgB2)"/>
+          <rect x="39" y="20" width="30" height="67" rx="15" fill="#08101f" opacity=".5"/>
+          <rect x="39.5" y="19.5" width="29" height="66" rx="14.5" fill="url(#goldB2)"/>
+          <rect x="41.2" y="21.2" width="25.6" height="62.6" rx="12.8" fill="none" stroke="#fff2cf" stroke-opacity=".38" stroke-width="1"/>
+          <circle cx="54" cy="67" r="4.2" fill="#14224a"/><circle cx="54" cy="67" r="1.6" fill="#f4b747"/>
+          <rect x="48" y="76" width="5" height="2.4" rx="1.2" fill="#14224a"/><rect x="55" y="76" width="5" height="2.4" rx="1.2" fill="#14224a"/>
+          <g stroke="#16234a" stroke-width="3.2" stroke-linecap="round"><path d="M54 29 44 39M54 29 64 39M44 39 34 50M44 39 49 50M64 39 59 50M64 39 74 50"/></g>
+          <g stroke="#a9bcff" stroke-width="1.7" stroke-linecap="round"><path d="M54 29 44 39M54 29 64 39M44 39 34 50M44 39 49 50M64 39 59 50M64 39 74 50"/></g>
+          <g fill="#c3d0ff" stroke="#16234a" stroke-width="1.2"><circle cx="54" cy="29" r="2.7"/><circle cx="44" cy="39" r="2.4"/><circle cx="64" cy="39" r="2.4"/><circle cx="34" cy="50" r="2.1"/><circle cx="49" cy="50" r="2.1"/><circle cx="59" cy="50" r="2.1"/><circle cx="74" cy="50" r="2.1"/></g>
+        </svg>
+        <div class="label">144</div>
+      </div>
+      <div>
+        <svg class="icon x48" viewBox="0 0 108 108" aria-label="Variant B tiny">
+          <defs><linearGradient id="goldB3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd37d"/><stop offset=".55" stop-color="#efaf3d"/><stop offset="1" stop-color="#c98213"/></linearGradient></defs>
+          <rect width="108" height="108" fill="#0b142b"/>
+          <rect x="39" y="20" width="30" height="67" rx="15" fill="#08101f" opacity=".5"/>
+          <rect x="39.5" y="19.5" width="29" height="66" rx="14.5" fill="url(#goldB3)"/>
+          <circle cx="54" cy="67" r="4.2" fill="#14224a"/><circle cx="54" cy="67" r="1.6" fill="#f4b747"/>
+          <rect x="48" y="76" width="5" height="2.4" rx="1.2" fill="#14224a"/><rect x="55" y="76" width="5" height="2.4" rx="1.2" fill="#14224a"/>
+          <g stroke="#16234a" stroke-width="3.2" stroke-linecap="round"><path d="M54 29 44 39M54 29 64 39M44 39 34 50M44 39 49 50M64 39 59 50M64 39 74 50"/></g>
+          <g stroke="#a9bcff" stroke-width="1.7" stroke-linecap="round"><path d="M54 29 44 39M54 29 64 39M44 39 34 50M44 39 49 50M64 39 59 50M64 39 74 50"/></g>
+          <g fill="#c3d0ff"><circle cx="54" cy="29" r="2.7"/><circle cx="44" cy="39" r="2.4"/><circle cx="64" cy="39" r="2.4"/><circle cx="34" cy="50" r="2.1"/><circle cx="49" cy="50" r="2.1"/><circle cx="59" cy="50" r="2.1"/><circle cx="74" cy="50" r="2.1"/></g>
+        </svg>
+        <div class="label">48</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>C — Signal remote</h2>
+    <div class="sizes">
+      <div>
+        <svg class="icon x512" viewBox="0 0 108 108" aria-label="Variant C">
+          <defs>
+            <linearGradient id="bgC" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1125"/><stop offset="1" stop-color="#1b2b58"/></linearGradient>
+            <linearGradient id="goldC" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd37d"/><stop offset=".55" stop-color="#efaf3d"/><stop offset="1" stop-color="#c98213"/></linearGradient>
+            <linearGradient id="screenC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#101b3b"/><stop offset="1" stop-color="#080e21"/></linearGradient>
+            <pattern id="patC" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M9 2.4 10.8 7.2 15.6 9 10.8 10.8 9 15.6 7.2 10.8 2.4 9 7.2 7.2Z" fill="none" stroke="#9fb0dc" stroke-opacity=".08" stroke-width=".7"/><circle cx="9" cy="9" r="6.2" fill="none" stroke="#9fb0dc" stroke-opacity=".055" stroke-width=".6"/></pattern>
+          </defs>
+          <rect width="108" height="108" fill="url(#bgC)"/><rect width="108" height="108" fill="url(#patC)"/>
+          <rect x="37" y="20" width="34" height="68" rx="17" fill="#08101f" opacity=".5"/>
+          <rect x="37.5" y="19.5" width="33" height="67" rx="16.5" fill="url(#goldC)"/>
+          <rect x="39.2" y="21.2" width="29.6" height="63.6" rx="14.8" fill="none" stroke="#fff2cf" stroke-opacity=".38" stroke-width="1"/>
+          <rect x="42" y="26" width="24" height="37" rx="7" fill="url(#screenC)" stroke="#7e5712" stroke-width=".7"/>
+          <g stroke="#8fa6f4" stroke-width="1.6" stroke-linecap="round"><path d="M54 32 44 43M54 32 64 43M44 43 38 53M44 43 50 53M64 43 58 53M64 43 70 53"/></g>
+          <g fill="#b8c7ff" stroke="#172448" stroke-width=".7"><circle cx="54" cy="32" r="2.5"/><circle cx="44" cy="43" r="2.2"/><circle cx="64" cy="43" r="2.2"/><circle cx="38" cy="53" r="1.9"/><circle cx="50" cy="53" r="1.9"/><circle cx="58" cy="53" r="1.9"/><circle cx="70" cy="53" r="1.9"/></g>
+          <circle cx="54" cy="69" r="4.2" fill="#14224a" stroke="#8a5b10" stroke-width=".8"/><circle cx="54" cy="69" r="1.6" fill="#f4b747"/>
+          <rect x="48" y="77" width="5" height="2.4" rx="1.2" fill="#14224a"/><rect x="55" y="77" width="5" height="2.4" rx="1.2" fill="#14224a"/>
+        </svg>
+        <div class="label">512</div>
+      </div>
+      <div>
+        <svg class="icon x144" viewBox="0 0 108 108" aria-label="Variant C small">
+          <defs><linearGradient id="goldC2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd37d"/><stop offset=".55" stop-color="#efaf3d"/><stop offset="1" stop-color="#c98213"/></linearGradient></defs>
+          <rect width="108" height="108" fill="#0b142b"/>
+          <rect x="37" y="20" width="34" height="68" rx="17" fill="#08101f" opacity=".5"/>
+          <rect x="37.5" y="19.5" width="33" height="67" rx="16.5" fill="url(#goldC2)"/>
+          <rect x="42" y="26" width="24" height="37" rx="7" fill="#0a1125"/>
+          <g stroke="#8fa6f4" stroke-width="1.6" stroke-linecap="round"><path d="M54 32 44 43M54 32 64 43M44 43 38 53M44 43 50 53M64 43 58 53M64 43 70 53"/></g>
+          <g fill="#b8c7ff"><circle cx="54" cy="32" r="2.5"/><circle cx="44" cy="43" r="2.2"/><circle cx="64" cy="43" r="2.2"/><circle cx="38" cy="53" r="1.9"/><circle cx="50" cy="53" r="1.9"/><circle cx="58" cy="53" r="1.9"/><circle cx="70" cy="53" r="1.9"/></g>
+          <circle cx="54" cy="69" r="4.2" fill="#14224a"/><circle cx="54" cy="69" r="1.6" fill="#f4b747"/>
+          <rect x="48" y="77" width="5" height="2.4" rx="1.2" fill="#14224a"/><rect x="55" y="77" width="5" height="2.4" rx="1.2" fill="#14224a"/>
+        </svg>
+        <div class="label">144</div>
+      </div>
+      <div>
+        <svg class="icon x48" viewBox="0 0 108 108" aria-label="Variant C tiny">
+          <defs><linearGradient id="goldC3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd37d"/><stop offset=".55" stop-color="#efaf3d"/><stop offset="1" stop-color="#c98213"/></linearGradient></defs>
+          <rect width="108" height="108" fill="#0b142b"/>
+          <rect x="37" y="20" width="34" height="68" rx="17" fill="#08101f" opacity=".5"/>
+          <rect x="37.5" y="19.5" width="33" height="67" rx="16.5" fill="url(#goldC3)"/>
+          <rect x="42" y="26" width="24" height="37" rx="7" fill="#0a1125"/>
+          <g stroke="#8fa6f4" stroke-width="1.6" stroke-linecap="round"><path d="M54 32 44 43M54 32 64 43M44 43 38 53M44 43 50 53M64 43 58 53M64 43 70 53"/></g>
+          <g fill="#b8c7ff"><circle cx="54" cy="32" r="2.5"/><circle cx="44" cy="43" r="2.2"/><circle cx="64" cy="43" r="2.2"/><circle cx="38" cy="53" r="1.9"/><circle cx="50" cy="53" r="1.9"/><circle cx="58" cy="53" r="1.9"/><circle cx="70" cy="53" r="1.9"/></g>
+          <circle cx="54" cy="69" r="4.2" fill="#14224a"/><circle cx="54" cy="69" r="1.6" fill="#f4b747"/>
+          <rect x="48" y="77" width="5" height="2.4" rx="1.2" fill="#14224a"/><rect x="55" y="77" width="5" height="2.4" rx="1.2" fill="#14224a"/>
+        </svg>
+        <div class="label">48</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

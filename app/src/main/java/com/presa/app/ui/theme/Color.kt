@@ -51,6 +51,8 @@ data class PresaColors(
     val brandNavy: Color = Color(0xFF1F2A5C),
     val brandNavyHi: Color = Color(0xFF35467F),
     val brandGold: Color = Color(0xFFC9A227),
+    val brandNavyDeep: Color = Color(0xFF080E20),
+    val brandNavyDeepHi: Color = Color(0xFF1C2C5B),
 )
 
 val LightPresaColors = PresaColors(

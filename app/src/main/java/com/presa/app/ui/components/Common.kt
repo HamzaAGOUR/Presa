@@ -189,7 +189,7 @@ fun PresaMark(size: Dp = 40.dp) {
             .clip(RoundedCornerShape(size * 0.28f))
             .background(
                 Brush.linearGradient(
-                    listOf(colors.brandNavy, colors.brandNavyHi),
+                    listOf(colors.brandNavyDeep, colors.brandNavyDeepHi),
                 ),
             ),
         contentAlignment = Alignment.Center,
@@ -199,7 +199,7 @@ fun PresaMark(size: Dp = 40.dp) {
             contentDescription = null,
             modifier = Modifier
                 .fillMaxSize()
-                .scale(1.45f),
+                .scale(1.4f),
         )
     }
 }
