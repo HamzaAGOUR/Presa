@@ -355,7 +355,7 @@ Presa turns an Android phone into a Bluetooth presentation remote. No data leave
 
 Presa transforme un téléphone Android en télécommande de présentation Bluetooth. Aucune donnée ne quitte votre téléphone : les touches et les mouvements du curseur sont envoyés directement à l’ordinateur comme ceux d’un clavier et d’une souris HID standard.
 
-Created by **El Mahdi Cherkane**, **Omar Moussaid** and **Hamza Agour** — **EST Béni Mellal**, d’après le cours du Pr. M. OUTANOUTE.
+Created by **El Mahdi Cherkane**, **Omar Moussaid** and **Hamza Agour** — **EST Béni Mellal**, under the supervision of Prof. M. OUTANOUTE.
 
 - [DSA Visualizer on GitHub](https://github.com/MehdiCherkane/dsa-visualizer)
 - [Presa on GitHub](https://github.com/HamzaAGOUR/Presa)

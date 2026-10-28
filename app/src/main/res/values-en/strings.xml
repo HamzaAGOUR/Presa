@@ -232,7 +232,7 @@
         <item>Hamza Agour</item>
     </string-array>
     <string name="about_institution">EST Béni Mellal</string>
-    <string name="about_source">d’après le cours du Pr. M. OUTANOUTE</string>
+    <string name="about_source">under the supervision of Prof. M. OUTANOUTE</string>
     <string name="about_section_links">Links</string>
     <string name="about_link_visualizer">DSA Visualizer on GitHub</string>
     <string name="about_link_presa">Presa on GitHub</string>
